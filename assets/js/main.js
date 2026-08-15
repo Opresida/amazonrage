@@ -8,12 +8,79 @@
 	var nav = document.getElementById("nav");
 	var toggle = document.getElementById("navToggle");
 
-	/* ---------------------------------------- header fixo */
+	var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	var mousePreciso = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+	/* ---------------------------------------- tela de carregamento
+	   A saída fica por conta do CSS. Aqui só animamos o contador e
+	   liberamos o atalho para quem não quer esperar. */
+
+	var preloader = document.getElementById("preloader");
+
+	if (preloader) {
+		var pct = document.getElementById("preloaderPct");
+		var duracao = calmo ? 200 : 3500;
+		var inicio = null;
+
+		(function conta(agora) {
+			if (inicio === null) inicio = agora;
+			var p = Math.min((agora - inicio) / duracao, 1);
+			pct.textContent = String(Math.round(p * 100));
+			if (p < 1) requestAnimationFrame(conta);
+		})(performance.now());
+
+		var pular = function () {
+			pct.textContent = "100";
+			preloader.classList.add("is-done");
+			document.removeEventListener("keydown", aoTeclar);
+		};
+		var aoTeclar = function (e) {
+			if (e.key === "Enter" || e.key === "Escape" || e.key === " ") pular();
+		};
+
+		preloader.addEventListener("click", pular);
+		document.addEventListener("keydown", aoTeclar);
+		setTimeout(function () { document.removeEventListener("keydown", aoTeclar); }, duracao + 700);
+	}
+
+	/* ---------------------------------------- header fixo + progresso */
+
+	var scrollBar = document.getElementById("scrollBar");
+	var pendente = false;
+
+	function aoRolar() {
+		header.classList.toggle("is-stuck", window.scrollY > 40);
+
+		if (scrollBar) {
+			var total = document.documentElement.scrollHeight - window.innerHeight;
+			scrollBar.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + "%";
+		}
+
+		if (!calmo) parallaxHero();
+	}
 
 	function onScroll() {
-		header.classList.toggle("is-stuck", window.scrollY > 40);
+		if (pendente) return;
+		pendente = true;
+		requestAnimationFrame(function () {
+			pendente = false;
+			aoRolar();
+		});
 	}
-	onScroll();
+
+	/* ---------------------------------------- profundidade no hero */
+
+	var crest = document.querySelector(".hero-crest");
+	var heroBg = document.querySelector(".hero-bg");
+
+	function parallaxHero() {
+		var y = window.scrollY;
+		if (y > window.innerHeight) return;
+		if (crest) crest.style.transform = "translateY(" + y * .16 + "px)";
+		if (heroBg) heroBg.style.transform = "translateY(" + y * .06 + "px)";
+	}
+
+	aoRolar();
 	window.addEventListener("scroll", onScroll, { passive: true });
 
 	/* ---------------------------------------- menu mobile */
@@ -127,6 +194,88 @@
 		counters.forEach(function (el) { counterObserver.observe(el); });
 	} else {
 		counters.forEach(function (el) { format(el, Number(el.dataset.count)); });
+	}
+
+	/* ---------------------------------------- embaralhar as legendas de seção
+	   As legendas ("01 — Quem somos") se montam letra a letra ao entrar na
+	   tela, como um terminal decifrando o texto. */
+
+	var CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\\<>*#$%&";
+
+	function embaralhar(el) {
+		var texto = el.textContent;
+		var quadro = 0;
+		var passos = texto.length * 3 + 12;
+
+		function tick() {
+			var saida = "";
+			for (var i = 0; i < texto.length; i++) {
+				var revelaEm = i * 3;
+				if (texto[i] === " " || quadro >= revelaEm + 6) {
+					saida += texto[i];
+				} else if (quadro >= revelaEm) {
+					saida += CARACTERES[Math.floor(Math.random() * CARACTERES.length)];
+				}
+			}
+			el.textContent = saida;
+			if (++quadro <= passos) setTimeout(tick, 28);
+			else el.textContent = texto;
+		}
+
+		tick();
+	}
+
+	if (!calmo && "IntersectionObserver" in window) {
+		var scrambler = new IntersectionObserver(function (entries, observer) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) return;
+				embaralhar(entry.target);
+				observer.unobserve(entry.target);
+			});
+		}, { threshold: .9 });
+
+		document.querySelectorAll(".eyebrow").forEach(function (el) { scrambler.observe(el); });
+	}
+
+	/* ---------------------------------------- reações ao cursor */
+
+	if (mousePreciso && !calmo) {
+		// holofote do hero
+		var hero = document.querySelector(".hero");
+		var spotlight = document.querySelector(".hero-spotlight");
+
+		if (hero && spotlight) {
+			hero.addEventListener("mousemove", function (e) {
+				var r = hero.getBoundingClientRect();
+				spotlight.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
+				spotlight.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
+			}, { passive: true });
+		}
+
+		// brilho seguindo o cursor dentro dos botões
+		document.querySelectorAll(".btn").forEach(function (btn) {
+			btn.addEventListener("mousemove", function (e) {
+				var r = btn.getBoundingClientRect();
+				btn.style.setProperty("--mx", e.clientX - r.left + "px");
+				btn.style.setProperty("--my", e.clientY - r.top + "px");
+			}, { passive: true });
+		});
+
+		// inclinação 3D nos cards do elenco
+		document.querySelectorAll(".player").forEach(function (card) {
+			card.addEventListener("mousemove", function (e) {
+				var r = card.getBoundingClientRect();
+				var px = (e.clientX - r.left) / r.width - .5;
+				var py = (e.clientY - r.top) / r.height - .5;
+				card.style.setProperty("--ry", px * 12 + "deg");
+				card.style.setProperty("--rx", -py * 12 + "deg");
+			}, { passive: true });
+
+			card.addEventListener("mouseleave", function () {
+				card.style.setProperty("--ry", "0deg");
+				card.style.setProperty("--rx", "0deg");
+			});
+		});
 	}
 
 	/* ---------------------------------------- planos -> formulário */

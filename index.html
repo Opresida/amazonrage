@@ -5,10 +5,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Marca que há JavaScript. As animações de entrada só escondem o conteúdo
+	     quando esta classe existe — sem JS o site aparece inteiro, normalmente. -->
+	<script>document.documentElement.classList.add("js");</script>
+
 	<title>Amazon Rage E-Sports | Reis do Norte</title>
 	<meta name="description"
 		content="A primeira organização de e-sports do Amazonas que paga salário aos seus atletas. Free Fire, Wild Rift, Rage Cast e uma comunidade de mais de 15 mil gamers. Conheça os planos de patrocínio.">
 	<meta name="theme-color" content="#07090B">
+
+	<!-- ATENÇÃO: ao apontar o domínio amazonrage.com para o Netlify, troque as
+	     cinco URLs absolutas abaixo (canonical, og:url, og:image e twitter:image)
+	     e também robots.txt e sitemap.xml. Nada mais depende do domínio. -->
 	<link rel="canonical" href="https://amazonrage.netlify.app/">
 
 	<meta property="og:type" content="website">
@@ -16,15 +24,26 @@
 	<meta property="og:locale" content="pt_BR">
 	<meta property="og:title" content="Amazon Rage E-Sports | Reis do Norte">
 	<meta property="og:description"
-		content="A primeira organização de e-sports do Amazonas que paga salário aos seus atletas. Descubra como sua marca pode fazer parte dessa revolução.">
+		content="Estrutura profissional para o talento que nasce no Norte. Free Fire, Wild Rift e o podcast Rage Cast — veja como a sua marca entra nessa.">
 	<meta property="og:url" content="https://amazonrage.netlify.app/">
 	<meta property="og:image" content="https://amazonrage.netlify.app/assets/img/og-cover.jpg">
+	<meta property="og:image:secure_url" content="https://amazonrage.netlify.app/assets/img/og-cover.jpg">
+	<meta property="og:image:type" content="image/jpeg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
-	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:image:alt" content="Escudo da Amazon Rage E-Sports com a hashtag #reisdonorte">
 
-	<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Amazon Rage E-Sports | Reis do Norte">
+	<meta name="twitter:description"
+		content="Estrutura profissional para o talento que nasce no Norte. Free Fire, Wild Rift e o podcast Rage Cast.">
+	<meta name="twitter:image" content="https://amazonrage.netlify.app/assets/img/og-cover.jpg">
+	<meta name="twitter:image:alt" content="Escudo da Amazon Rage E-Sports com a hashtag #reisdonorte">
+
+	<link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
+	<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
 
 	<link rel="preload" href="/assets/fonts/chakra-petch-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -49,6 +68,21 @@
 </head>
 
 <body>
+	<!-- Tela de carregamento. A saída é 100% CSS (animação com delay), então
+	     ela some mesmo se o JavaScript falhar. O JS só anima o contador. -->
+	<div class="preloader" id="preloader" aria-hidden="true">
+		<div class="preloader-inner">
+			<img class="preloader-crest" src="/assets/img/logo.png" alt="" width="190" height="161">
+			<p class="preloader-name glitch" data-text="AMAZON RAGE">AMAZON RAGE</p>
+			<div class="preloader-bar"><span></span></div>
+			<p class="preloader-status"><b id="preloaderPct">0</b>% — preparando a arena</p>
+			<p class="preloader-skip">clique para entrar</p>
+		</div>
+	</div>
+
+	<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+	<div class="scanlines" aria-hidden="true"></div>
+
 	<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 	<header class="site-header" id="topo">
@@ -82,6 +116,7 @@
 		<!-- ============================ HERO ============================ -->
 		<section class="hero">
 			<div class="hero-bg" aria-hidden="true"></div>
+			<div class="hero-spotlight" aria-hidden="true"></div>
 			<div class="stripes stripes-left" aria-hidden="true"></div>
 
 			<div class="wrap hero-inner">
@@ -89,7 +124,7 @@
 					<p class="kicker"><span class="dot"></span> #reisdonorte</p>
 					<h1>
 						<span class="line-1">Amazon</span>
-						<span class="line-2">Rage</span>
+						<span class="line-2 glitch glitch-slow" data-text="Rage">Rage</span>
 					</h1>
 					<p class="lead">
 						A <strong>primeira organização de e-sports do Amazonas</strong> que paga salário aos seus
@@ -101,10 +136,10 @@
 					</div>
 
 					<ul class="hero-stats">
-						<li><b data-count="15400" data-suffix="+">0</b><span>seguidores no Instagram</span></li>
-						<li><b data-count="4" data-suffix="">0</b><span>títulos conquistados</span></li>
-						<li><b data-count="6" data-suffix="">0</b><span>atletas em destaque</span></li>
-						<li><b data-count="2" data-suffix="">0</b><span>modalidades competitivas</span></li>
+						<li><b data-count="15400" data-suffix="+">15.400+</b><span>seguidores no Instagram</span></li>
+						<li><b data-count="4" data-suffix="">4</b><span>títulos conquistados</span></li>
+						<li><b data-count="6" data-suffix="">6</b><span>atletas em destaque</span></li>
+						<li><b data-count="2" data-suffix="">2</b><span>modalidades competitivas</span></li>
 					</ul>
 				</div>
 
@@ -269,18 +304,18 @@
 
 					<div class="stats-grid stats-stack">
 						<article class="stat reveal">
-							<b data-count="2" data-suffix="K+">0</b>
+							<b data-count="2" data-suffix="K+">2K+</b>
 							<h3>Cadeia de empregos</h3>
 							<p>Atletas, técnicos, streamers, narradores, designers, programadores e muito mais.</p>
 						</article>
 						<article class="stat reveal">
-							<b data-prefix="US$ " data-count="63" data-suffix="M">0</b>
+							<b data-prefix="US$ " data-count="63" data-suffix="M">US$ 63M</b>
 							<h3>Faturamento no Brasil</h3>
 							<p>O mercado de e-sports no Brasil faturou entre US$ 63 e US$ 64 milhões em 2024, com
 								destaque para mídia, patrocínios e direitos de transmissão.</p>
 						</article>
 						<article class="stat reveal">
-							<b data-count="70" data-suffix="M+">0</b>
+							<b data-count="70" data-suffix="M+">70M+</b>
 							<h3>Pessoas conectadas</h3>
 							<p>Uma audiência que consome, comenta e compartilha — todos os dias, em todas as telas.</p>
 						</article>
@@ -353,15 +388,15 @@
 
 				<div class="stats-grid stats-inline">
 					<article class="stat reveal">
-						<b data-count="30" data-suffix="K+">0</b>
+						<b data-count="30" data-suffix="K+">30K+</b>
 						<h3>Visualizações diárias</h3>
 					</article>
 					<article class="stat reveal">
-						<b data-count="50" data-suffix="+">0</b>
+						<b data-count="50" data-suffix="+">50+</b>
 						<h3>Matérias por dia</h3>
 					</article>
 					<article class="stat reveal">
-						<b data-count="2012" data-raw="true">0</b>
+						<b data-count="2012" data-raw="true">2012</b>
 						<h3>Ano de fundação</h3>
 					</article>
 				</div>
@@ -596,8 +631,8 @@
 		<div class="wrap footer-inner">
 			<div class="footer-brand">
 				<img src="/assets/img/logo.png" alt="Amazon Rage" width="120" height="102" loading="lazy">
-				<p>A primeira organização de e-sports do Amazonas que paga salário aos seus atletas.
-					<strong>#reisdonorte</strong>
+				<p>Estrutura profissional, disciplina competitiva e representatividade para o talento que nasce no
+					Norte. <strong>#reisdonorte</strong>
 				</p>
 			</div>
 

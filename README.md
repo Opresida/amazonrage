@@ -9,14 +9,65 @@ Página única, estática, sem etapa de build — pensada para deploy direto no 
 index.html            Página principal (todas as seções)
 404.html              Página de erro personalizada
 netlify.toml          Deploy, cabeçalhos e redirects
+site.webmanifest      Nome, cores e ícones ao salvar na tela inicial
 robots.txt            Liberação para buscadores
 sitemap.xml           Mapa do site
 assets/
   css/style.css       Folha de estilo única
-  js/main.js          Menu, animações, contadores e envio do formulário
-  img/                Logo, favicon, capa social e imagens de fundo
+  js/main.js          Menu, loader, efeitos, contadores e envio do formulário
+  fonts/              Chakra Petch e Barlow auto-hospedadas
+  img/                Logo, ícones, capa social e imagens de fundo
   img/team/           Fotos do elenco
 ```
+
+## Ícones e capa social
+
+O favicon é uma marca própria, simplificada a partir do escudo — o logo
+completo vira uma mancha verde em 16 px. A geometria vive em
+`assets/img/favicon.svg` e os PNG/ICO saem dela:
+
+| Arquivo                  | Uso                                        |
+| ------------------------ | ------------------------------------------ |
+| `favicon.svg`            | Navegadores modernos, escala perfeita      |
+| `favicon.ico`            | 16/32/48 px, navegadores antigos           |
+| `apple-touch-icon.png`   | 180 px, atalho no iOS                      |
+| `icon-192/512.png`       | Manifest e Android                         |
+| `icon-maskable-512.png`  | Android adaptativo, com área de segurança  |
+| `og-cover.jpg`           | 1200×630, preview em WhatsApp/Instagram/X  |
+
+Ao trocar a capa social, mantenha 1200×630 e teste o resultado no
+[Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
+— as redes guardam o preview em cache por dias.
+
+## Tela de carregamento
+
+Dura **3,5 segundos** e sai sozinha. A saída é feita por animação CSS com
+atraso, não por JavaScript: se o script falhar, a tela some do mesmo jeito.
+O JS só anima o contador de porcentagem.
+
+- Duração: variável `--preloader-time` em `.preloader` no `style.css`
+- Clique, `Esc`, `Enter` ou espaço pulam a espera
+- Com `prefers-reduced-motion` a tela sai quase imediatamente
+
+Vale lembrar: 3,5 s é bastante tempo para quem chega pela primeira vez. Se
+o time notar queda no contato, reduzir para 1,5–2 s costuma resolver.
+
+## Efeitos de ambiente
+
+Todos desligam sozinhos com `prefers-reduced-motion`, e os que dependem do
+cursor só rodam em telas com mouse (`hover: hover`):
+
+| Efeito                    | Onde                                     |
+| ------------------------- | ---------------------------------------- |
+| Barra de progresso        | Topo da página, acompanha a rolagem      |
+| Scanlines                 | Textura fina sobre todo o site           |
+| Holofote do cursor        | Dentro do hero                           |
+| Falha de sinal (glitch)   | "Rage" no hero e no nome do loader       |
+| Decodificação de texto    | Legendas de seção ao entrarem na tela    |
+| Inclinação 3D             | Cards do elenco                          |
+| Brilho no cursor          | Todos os botões                          |
+| Profundidade na rolagem   | Escudo e fundo do hero                   |
+| Contadores                | Números do hero, impacto e mídia         |
 
 ## Seções da página
 
