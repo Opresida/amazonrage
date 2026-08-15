@@ -465,9 +465,9 @@ h3 {
 
 .hero-stats {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, auto));
+	grid-template-columns: repeat(4, minmax(0, auto));
 	justify-content: start;
-	gap: 14px 40px;
+	gap: 14px 34px;
 	list-style: none;
 	padding: 22px 0 0;
 	margin: 0;
@@ -875,6 +875,21 @@ h3 {
 	text-align: center;
 }
 
+/* Coluna de números ao lado da foto da equipe */
+.stats-stack {
+	grid-template-columns: 1fr;
+	gap: 14px;
+}
+
+.stats-stack .stat {
+	padding: 24px 26px;
+}
+
+.stats-stack .stat b {
+	font-size: clamp(2rem, 3.6vw, 2.6rem);
+	margin-bottom: 8px;
+}
+
 /* ---------------------------------------------- cartão do instagram */
 
 .ig-card {
@@ -1078,6 +1093,37 @@ a.chip:hover {
 
 .plan-price span {
 	font-size: 1.1rem;
+	color: var(--muted);
+}
+
+/* Valores só na proposta comercial: mostramos a máscara e o aviso. */
+.plan-price.is-masked {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	line-height: 1;
+}
+
+.plan-price.is-masked span {
+	font-size: inherit;
+	color: var(--white);
+}
+
+/* O glifo do asterisco fica no alto da linha: desce para a altura do R$. */
+.plan-price.is-masked i {
+	display: inline-block;
+	font-style: normal;
+	letter-spacing: .05em;
+	transform: translateY(.2em);
+}
+
+.plan-price.is-masked em {
+	font-family: var(--font-body);
+	font-style: normal;
+	font-size: .82rem;
+	font-weight: 500;
+	letter-spacing: .1em;
+	text-transform: uppercase;
 	color: var(--muted);
 }
 

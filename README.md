@@ -33,6 +33,15 @@ assets/
 
 Todo o conteúdo veio da apresentação comercial oficial da equipe.
 
+### Valores dos planos
+
+Os preços **não aparecem no site** — cada plano mostra `R$ ****` com o aviso
+"valor sob consulta", mantendo a lista completa de benefícios. A negociação
+acontece pela proposta comercial, a partir do formulário de contato.
+
+Para exibir os valores no futuro, troque o bloco `.plan-price.is-masked` de
+cada plano no `index.html` por um preço normal.
+
 ## Rodando localmente
 
 Não há dependências nem build. Basta servir a pasta:
@@ -91,7 +100,7 @@ Ao apontar um domínio definitivo, atualize as referências em:
 
 | O que mudar          | Onde                                                       |
 | -------------------- | ---------------------------------------------------------- |
-| Preços e cotas       | `index.html`, seção `#patrocinio`                           |
+| Cotas dos planos     | `index.html`, seção `#patrocinio`                           |
 | Elenco               | `index.html`, seção `#elenco` + fotos em `assets/img/team/` |
 | Números do hero      | Atributos `data-count` no `index.html`                      |
 | Cores da marca       | Variáveis `--green`, `--lime` no topo do `style.css`         |
