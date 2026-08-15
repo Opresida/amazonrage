@@ -1,519 +1,618 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html lang="pt-BR">
+
 <head>
-	<!-- Basic metas
-    ======================================== -->
 	<meta charset="utf-8">
-	<meta name="author" content="">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Mobile specific metas
-    ======================================== -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta property="og:title" content="Documentation" />
-	<meta property="og:url" content="index.html" />
-	<!-- Page Title
-    ======================================== -->
-	<title>MYKD - eSports and Gaming Next js Template</title>
+	<title>Amazon Rage E-Sports | Reis do Norte</title>
+	<meta name="description"
+		content="A primeira organização de e-sports do Amazonas que paga salário aos seus atletas. Free Fire, Wild Rift, Rage Cast e uma comunidade de mais de 15 mil gamers. Conheça os planos de patrocínio.">
+	<meta name="theme-color" content="#07090B">
+	<link rel="canonical" href="https://amazonrage.netlify.app/">
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
-	<!-- fonts
-	======================================== -->
-	<link rel="stylesheet" type="text/css" href="assets/css/elegantFont.css">
-	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="assets/css/vendor/bootstrap.min.css">
-	<!-- Custom css -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Amazon Rage E-Sports">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:title" content="Amazon Rage E-Sports | Reis do Norte">
+	<meta property="og:description"
+		content="A primeira organização de e-sports do Amazonas que paga salário aos seus atletas. Descubra como sua marca pode fazer parte dessa revolução.">
+	<meta property="og:url" content="https://amazonrage.netlify.app/">
+	<meta property="og:image" content="https://amazonrage.netlify.app/assets/img/og-cover.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+	<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+	<link rel="preload" href="/assets/fonts/chakra-petch-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="/assets/css/style.css">
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SportsOrganization",
+		"name": "Amazon Rage E-Sports",
+		"alternateName": "Reis do Norte",
+		"sport": "Esports",
+		"url": "https://amazonrage.netlify.app/",
+		"logo": "https://amazonrage.netlify.app/assets/img/logo.png",
+		"email": "contato@amazonrage.com",
+		"telephone": "+5516982166580",
+		"areaServed": "Amazonas, Brasil",
+		"address": { "@type": "PostalAddress", "addressRegion": "AM", "addressCountry": "BR" },
+		"sameAs": ["https://www.instagram.com/amazonrage/"]
+	}
+	</script>
 </head>
 
 <body>
-	<!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
-	<!-- Header starts -->
-	<a href="#top" class="back-to-top"><i class="fal fa-arrow-up"></i></a>
+	<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-	<header class="page-header sticky-top" id="top">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-					<div class="logo">
-						<a href="#" class="nav-brand">
-							<img src="assets/images/logo.png" alt="logo" width="155" height="36">
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-9 col-md-8 col-sm-6 col-6">
-					<div class="right-part d-flex justify-content-end align-items-center">
-						<form action="#" class="search-form d-none d-lg-block">
-							<div class="input-group">
-								<input type="text" class="search-input" placeholder="Search item">
-							</div>
-						</form>
-						<div class="nav-list">
-							<a class="support-link d-none d-md-inline-block" href="https://themeforest.net/user/themegenix" target="_blank">request support</a>
-							<a class="e-btn d-none d-md-inline-block" href="https://themeforest.net/user/themegenix/portfolio" target="_blank">Visit Themes</a>
-							<a href="#" class="toggle-navbar"><i class="icon_menu"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
+	<header class="site-header" id="topo">
+		<div class="wrap header-inner">
+			<a class="brand" href="#topo" aria-label="Amazon Rage — início">
+				<img src="/assets/img/logo.png" alt="Amazon Rage" width="150" height="127" fetchpriority="high">
+				<span class="brand-text">
+					<strong>Amazon Rage</strong>
+					<em>E-Sports · Amazonas</em>
+				</span>
+			</a>
+
+			<nav class="nav" id="nav" aria-label="Navegação principal">
+				<a href="#sobre">Quem somos</a>
+				<a href="#elenco">Elenco</a>
+				<a href="#ragecast">Rage Cast</a>
+				<a href="#comunidade">Comunidade</a>
+				<a href="#patrocinio">Patrocínio</a>
+				<a class="btn btn-primary nav-cta" href="#contato">Seja patrocinador</a>
+			</nav>
+
+			<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav"
+				aria-label="Abrir menu">
+				<span></span><span></span><span></span>
+			</button>
 		</div>
-		<!-- End of .container -->
 	</header>
-	<div class="main-content-wrapper">
-		<div class="container ">
-			<div class="row doc-container">
-				<div class="col-xl-3">
-					<aside class="sidebar-navigation sticky-top doc-sidebar">
-						<h3>Doc Navigation</h3>
-						<!-- <nav class="nav">						 -->
-							<ul class="themepure-doc-nav  nav-sidebar doc-nav">
-								<li class="nav-item">
-									<a class="nav-link" href="#getting_started"><img src="assets/images/icon/start-button.png"> Getting Started </a>
-									<span class="icon">
-										<i class="icon_plus"></i>
-										<i class="icon_minus-06"></i>
-									</span>
-									<ul class="submenu dropdown_nav">
-										<li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
-										<li class="nav-item"><a class="nav-link" href="#what_included">What's Included</a></li>
-									</ul>
-								</li>
 
-								<li class="nav-item">
-									<a class="nav-link" href="#react_installation"><img src="assets/images/icon/react-icon.png"> React Installation</a>
-								</li>
+	<main id="conteudo">
 
-								<li class="nav-item">
-									<a class="nav-link" href="#basic_site_setting"><img src="assets/images/icon/writer.png"> Basic Site Setting</a>
-									<span class="icon">
-										<i class="icon_plus"></i>
-										<i class="icon_minus-06"></i>
-									</span>
-									<ul class="submenu dropdown_nav">
-										<li class="sub-nav nav-item ">
-											<a class="nav-link" href="#change_site_title_and_favicon">Change Site Title and Favicon</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#change_logo">Changing Brand Logo</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#customize_menu">Customize Menu</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#customize_footer">Customize Footer</a>
-										</li>
-									</ul>
-								</li>
+		<!-- ============================ HERO ============================ -->
+		<section class="hero">
+			<div class="hero-bg" aria-hidden="true"></div>
+			<div class="stripes stripes-left" aria-hidden="true"></div>
 
-								<li class="nav-item">
-									<a class="nav-link" href="#pages"><img src="assets/images/icon/landing-page.png"> Pages </a>
-									<span class="icon">
-										<i class="icon_plus"></i>
-										<i class="icon_minus-06"></i>
-									</span>
-									<ul class="submenu dropdown_nav">
-										<li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-										<li class="nav-item"><a class="nav-link" href="#product">Product</a></li>
-									</ul>
-								</li>
+			<div class="wrap hero-inner">
+				<div class="hero-copy reveal">
+					<p class="kicker"><span class="dot"></span> #reisdonorte</p>
+					<h1>
+						<span class="line-1">Amazon</span>
+						<span class="line-2">Rage</span>
+					</h1>
+					<p class="lead">
+						A <strong>primeira organização de e-sports do Amazonas</strong> que paga salário aos seus
+						atletas — e movimenta a cena gamer da região com talento, profissionalismo e impacto social.
+					</p>
+					<div class="hero-actions">
+						<a class="btn btn-primary" href="#patrocinio">Ver planos de patrocínio</a>
+						<a class="btn btn-ghost" href="#elenco">Conhecer o elenco</a>
+					</div>
 
-								<li class="nav-item">
-									<a class="nav-link" href="#template_options"><img src="assets/images/icon/settings.png"> Template Options </a>
-									<span class="icon">
-										<i class="icon_plus"></i>
-										<i class="icon_minus-06"></i>
-									</span>
-									<ul class="submenu dropdown_nav">
-										<li class="nav-item"><a class="nav-link" href="#option_header">Header</a></li>
-										<li class="nav-item"><a class="nav-link" href="#option_color">Color</a></li>
-										<li class="nav-item"><a class="nav-link" href="#option_typo">Typography</a></li>
-									</ul>
-								</li>
-								<li class="nav-item">
-								<a class="nav-link" href="#support"><img src="assets/images/icon/headphone.png">Support</a>
-								</li>
-							</ul>
-						<!-- </nav> -->
-					</aside>
+					<ul class="hero-stats">
+						<li><b data-count="15400" data-suffix="+">0</b><span>seguidores no Instagram</span></li>
+						<li><b data-count="6" data-suffix="">0</b><span>atletas em destaque</span></li>
+						<li><b data-count="2" data-suffix="">0</b><span>modalidades competitivas</span></li>
+					</ul>
 				</div>
-				<div class="col-xl-9 col-lg-12">
-					<div class="main-content">
-						<main class="main">
-							<div class="filterable-wrapper">
-								<article id="getting_started" class="section-main doc-section">
-									<div class="steps-panel">
-										<ol class="ordered-list">
-											<li>
-												<strong>Item Name : </strong>MYKD - eSports and Gaming NextJS Template
-											</li>
-											<li>
-												<strong>Created: </strong>05 September 2023
-											</li>
-											<li>
-												<strong>Update: </strong>23 November 2024
-											</li>
-											<li><strong>Item Version : </strong> v 1.2</li>
-											<li>
-												<strong>Author : </strong>
-												<a href="https://themeforest.net/user/themegenix/portfolio" target="_blank">ThemeGenix</a>
-											</li>
-											<li>
-												<strong>Support Ticket: </strong>
-												<a href="https://themeforest.net/item/mykd-esports-and-gaming-nft-nextjs-template/47633505/support" target="_blank">Send Support Request</a>
-											</li>
-										</ol>
-									</div>
-									<figure>
-										<img class="max-100" src="assets/images/mykd.png" alt="">
-									</figure>
 
-									<section id="introduction">
-										<h2>Introduction</h2>
-										<h4 class="title">MYKD - eSports and Gaming Next js Template Documentation</h4>
-										<div class="top-support">For any support please don't hesitate to contact us at <a href="https://themeforest.net/user/themegenix"><b>Support Center</b></a>. We provide 13 hours real-time support for our customers.</div>
-										<p>We would like to thank you for choosing <b>MYKD</b>.</p>
-									</section>
-									<!-- End of #getting_started -->
-									<section id="requirements">
-									<h3>Getting started</h3>
-									<p>MYKD – eSports and Gaming NFT Template. It is especially following category like gaming website, magazine, present your team, gaming tournament, NFT gaming & much more. The template features stunning NFT and gamer templates, as well as options and functionalities ideal for video game sites. If computer games matter to you, MYKD is the perfect pick for your captivating new gaming website!</p>
+				<div class="hero-crest reveal" aria-hidden="true">
+					<img src="/assets/img/logo.png" alt="" width="560" height="474" fetchpriority="high">
+				</div>
+			</div>
 
-									<div class="requirements">
-										<h2>Requirements</h2>
-										<p>There are system requirements in order to install and setup Mykd template and its components properly. Make sure that you are installed <strong>node.js</strong> and <strong>Yarn</strong>.</p>
+			<div class="ticker" aria-hidden="true">
+				<div class="ticker-track">
+					<span>Free Fire</span><i>◆</i><span>Wild Rift</span><i>◆</i><span>Reis do Norte</span><i>◆</i>
+					<span>Rage Cast</span><i>◆</i><span>Amazonas</span><i>◆</i><span>#reisdonorte</span><i>◆</i>
+					<span>Free Fire</span><i>◆</i><span>Wild Rift</span><i>◆</i><span>Reis do Norte</span><i>◆</i>
+					<span>Rage Cast</span><i>◆</i><span>Amazonas</span><i>◆</i><span>#reisdonorte</span><i>◆</i>
+				</div>
+			</div>
+		</section>
 
-										<h4>For nodejs go here <a target="_blank" href="https://nodejs.org/en/">Nodjs <i class="icon_link_alt"></i></a></h4>
-										<figure>
-											<img class="max-100" src="assets/images/nodejs.png" alt="">
-										</figure>
+		<!-- ============================ QUEM SOMOS ============================ -->
+		<section class="section" id="sobre">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">01 — Quem somos</p>
+					<h2>Mais que um time.<br><span class="hl">Um movimento.</span></h2>
+					<p class="section-lead">
+						Somos um movimento de transformação social, inclusão digital e fomento ao empreendedorismo jovem
+						através do universo dos e-sports.
+					</p>
+				</header>
 
-										<h4>For yarn go here <a target="_blank" href="https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable">Yarn <i class="icon_link_alt"></i></a></h4>
-										<figure>
-											<img class="max-100" src="assets/images/yarn.png" alt="">
-										</figure>
+				<div class="cards-3">
+					<article class="card reveal">
+						<span class="card-num">01</span>
+						<h3>Missão</h3>
+						<p>Nascemos com a missão de dar protagonismo aos gamers do Amazonas — com estrutura,
+							profissionalismo e remuneração de verdade.</p>
+					</article>
+					<article class="card reveal">
+						<span class="card-num">02</span>
+						<h3>Campeonatos</h3>
+						<p>Participamos de campeonatos, produzimos conteúdo original, transmitimos ao vivo e somos
+							movidos pela paixão de representar o Norte do Brasil no cenário nacional.</p>
+					</article>
+					<article class="card reveal">
+						<span class="card-num">03</span>
+						<h3>Movimento</h3>
+						<p>Mais que um time: somos um movimento de transformação que abre portas para uma nova geração
+							dentro e fora dos jogos.</p>
+					</article>
+				</div>
+			</div>
+		</section>
 
-										<h4>Install Yarn</h4>
-										<figure>
-											<img class="max-100" src="assets/images/yearn-install.png" alt="">
-										</figure>
-									</div>
+		<!-- ============================ ELENCO ============================ -->
+		<section class="section section-alt" id="elenco">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">02 — Hall de ídolos</p>
+					<h2>Nossos talentos <span class="hl">em destaque</span></h2>
+					<p class="section-lead">
+						Cada pessoa, um sonho. Cada sonho, um objetivo. Cada objetivo, um foco. Cada foco, uma missão.
+						Cada missão, uma história. Cada história, uma realização.
+					</p>
+				</header>
 
+				<div class="roster">
+					<article class="player reveal">
+						<img src="/assets/img/team/fael.jpg" alt="Fael, atleta de Free Fire da Amazon Rage" width="595"
+							height="590" loading="lazy">
+						<span class="player-tag">Free Fire</span>
+						<h3>Fael</h3>
+					</article>
+					<article class="player reveal">
+						<img src="/assets/img/team/netto.jpg" alt="Netto, atleta de Free Fire da Amazon Rage" width="594"
+							height="593" loading="lazy">
+						<span class="player-tag">Free Fire</span>
+						<h3>Netto</h3>
+					</article>
+					<article class="player reveal">
+						<img src="/assets/img/team/niltao.jpg" alt="Niltão, atleta de Wild Rift da Amazon Rage"
+							width="594" height="591" loading="lazy">
+						<span class="player-tag">Wild Rift</span>
+						<h3>Niltão</h3>
+					</article>
+					<article class="player reveal">
+						<img src="/assets/img/team/rouba-frag.jpg" alt="Rouba Frag, atleta de Wild Rift da Amazon Rage"
+							width="591" height="595" loading="lazy">
+						<span class="player-tag">Wild Rift</span>
+						<h3>Rouba Frag</h3>
+					</article>
+					<article class="player reveal">
+						<img src="/assets/img/team/carolx.jpg" alt="CarolX, atleta de Free Fire da Amazon Rage"
+							width="594" height="594" loading="lazy">
+						<span class="player-tag">Free Fire</span>
+						<h3>CarolX</h3>
+					</article>
+					<article class="player reveal">
+						<img src="/assets/img/team/gigi-drx.jpg" alt="Gigi DRX, atleta de Free Fire da Amazon Rage"
+							width="476" height="592" loading="lazy">
+						<span class="player-tag">Free Fire</span>
+						<h3>Gigi DRX</h3>
+					</article>
+				</div>
+			</div>
+		</section>
 
-									<h4>Template Features</h4>
-									<div class="steps-panel">
-										<ul class="ordered-list">
-											<li><b>React JS</b></li>
-											<li><b>Next JS (App Directory)</b></li>
-											<li><b>Typescript</b></li>
-											<li>Based on Bootstrap 5.x</li>
-											<li>React hook form</li>
-											<li>ReactJS without jQuery</li>
-											<li>Free Premium Quality Support</li>
-											<li>Logo Slider Integration</li>
-											<li>Sticky Header</li>
-											<li>Google Fonts</li>
-											<li>100% Responsive</li>
-											<li>Nice and Clean Design</li>
-											<li>Clean and commented code</li>
-											<li>Customizeable all components of each page</li>
-											<li>Integrated with FontAwesome </li>
-											<li>2+ Home Pages</li>
-											<li>11+ Inner Pages</li>
-											<li>Blog Pages</li>
-											<li>Image background</li>
-											<li>Easy to customize</li>
-											<li>Flexible and multi-purpose</li>
-											<li>Valid / CSS3</li>
-											<li>24/7 Awesome support</li>
-											<li>Detailed documentation</li>
-										</ul>
-									</div>
+		<!-- ============================ RAGE CAST ============================ -->
+		<section class="section" id="ragecast">
+			<div class="wrap split">
+				<div class="split-media reveal">
+					<img src="/assets/img/setup.jpg" alt="Setup de transmissão da Amazon Rage" width="1400" height="933"
+						loading="lazy">
+					<span class="badge-corner">#podcast</span>
+				</div>
 
-									</section>
-									<!-- End of #requirements -->
-									<section id="what_included">
-										<h3>What's Included</h3>
-										<p>After purchasing MYKD template  on themeforest.net with your Envato account, go to your
-											Download page. You can choose to download MYKD template  package which contains the following files:</p>
-										<figure>
-											<img class="max-100" src="assets/images/include/1.png" alt="">
-										</figure>
-										<h4>The contents of the template  package downloaded from ThemeForest</h4>
-										<div class="steps-panel">
-											<ul class="ordered-list">
-												<li><strong>MYKD</strong> - An React Template file.  this file you ca edit and use for your business.</li>
-												<li><strong>Documentation</strong> -  This folder contains what you are reading now :)</li>
-											</ul>
-										</div>
-									</section>
-									<!-- End of #what_included -->
-								</article>
+				<div class="split-copy reveal">
+					<p class="eyebrow">03 — Rage Cast</p>
+					<h2>O nosso <span class="hl">podcast oficial</span></h2>
+					<p class="section-lead">
+						O <strong>RAGE CAST</strong> é mais do que um podcast — é uma vitrine para ideias, talentos e
+						marcas que acreditam no potencial da nova geração. Produção profissional, linguagem descontraída
+						e convidados especiais.
+					</p>
 
-								<article id="react_installation" class="section-main doc-section">
-									<section>
-										<h2>React Installation</h2>
-										<p>Please follow the instructions in the video to see how you can install react on your hosting:</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li><strong>For local host</strong> -
-													<ol class="ordered-list">
-														<li>Open you command prompt</li>
-														<li>npm install or npm install --legacy-peer-deps</li>
-														<li>npm run dev (will start the dev server at <strong>http://loaclhost:3000</strong>)</li>
-													</ol>
-												</li>
-											</ol>
-											<br>
-											<br>
-											<ol class="ordered-list">
-												<li><strong>To deploy a Next.js application on Vercel, you can follow these steps: -</strong> -
-													<ol class="ordered-list">
-														<li>Open you command prompt</li>
-														<li>Sign up for an account on Vercel if you don't have one already.
-														</li>
-														<li>Connect your GitHub, GitLab, or Bitbucket repository where your Next.js application is hosted.</li>
-														<li>Import your repository on Vercel and select the Next.js project to be deployed.</li>
-														<li>Vercel will automatically detect your vue nuxt application and perform the necessary build and deployment steps.</li>
-														<li>Once the deployment is complete, you'll be able to access your application using the URL provided by Vercel.</li>
-													</ol>
-												</li>
-											</ol>
-										</div>
-									</section>
-									<!-- End of #installation -->
-									<!-- End of #using_ftp_uploader -->
-								</article>
+					<ul class="feature-list">
+						<li>
+							<h3>Conteúdo relevante e jovem</h3>
+							<p>Universo gamer, bastidores da equipe, curiosidades do cenário e temas que conectam com o
+								público jovem.</p>
+						</li>
+						<li>
+							<h3>Marca presente em todos os episódios</h3>
+							<p>Sua marca é citada, exibida no cenário e integrada aos quadros do podcast com
+								naturalidade e impacto.</p>
+						</li>
+						<li>
+							<h3>Distribuição multiplataforma</h3>
+							<p>Distribuído no Spotify, YouTube e Instagram, ampliando o alcance da sua marca.</p>
+						</li>
+					</ul>
 
-								<article id="basic_site_setting" class="section-main doc-section">
-									<section>
-										<h2>Basic Site Settings</h2>
-									</section>
-									<!-- End of #section-4 -->
-									<section id="change_site_title_and_favicon">
-										<h3>Change Site Title, Favicon and Page Title</h3>
-										<p>To change your Site title and Favicon open the MYKD in your editor and go to the location by following screenshot which are given bellow.</p>
-										<figure>
-											<img src="assets/images/change-title.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">You can change <b>title</b> here</figcaption>
-										</figure>
-										<figure>
-											<img src="assets/images/page-title.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">You can change <b>page title</b> here</figcaption>
-										</figure>
-										<figure>
-											<img src="assets/images/site-favicon.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">You can change <b>favicon</b> here</figcaption>
-										</figure>
-									</section>
-									<!-- End of #installation -->
-									<section id="change_logo">
-										<h3>Change Logo</h3>
-										<p>To change logo and customize other header data do the following:</p>
-										<figure>
-											<img src="assets/images/site-logo.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">You can change <b>logo</b> here</figcaption>
-										</figure>
-									</section>
-									<!-- End of #using_theme_uploader -->
+					<a class="btn btn-ghost" href="https://www.instagram.com/rage.cast/" target="_blank"
+						rel="noopener">@rage.cast no Instagram</a>
+				</div>
+			</div>
+		</section>
 
-									<section id="customize_menu">
-										<h3>Customize Menu</h3>
-										<p>To customize menu do the following:</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps"><span class="direction_step">src </span><span class="direction_step">data</span>
-												<span class="direction_step">menu-data</span><span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the menu</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/nav-menus.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the menu</figcaption>
-										</figure>
-									</section>
+		<!-- ============================ IMPACTO ============================ -->
+		<section class="section section-alt" id="impacto">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">04 — Impacto do e-sports</p>
+					<h2>Um mercado que <span class="hl">não para de crescer</span></h2>
+				</header>
 
-									<section id="customize_footer">
-										<h3>Customize Footer</h3>
-										<p>To customize footer data do the following:</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">src</span><span class="direction_step">layout</span><span class="direction_step">footer</span>
-												<span class="direction_step">footer.tsx</span><span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the footer data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/site-footers.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the footer</figcaption>
-										</figure>
-									</section>
+				<div class="stats-grid">
+					<article class="stat reveal">
+						<b data-count="2" data-suffix="K+">0</b>
+						<h3>Cadeia de empregos</h3>
+						<p>Atletas, técnicos, streamers, narradores, designers, programadores e muito mais.</p>
+					</article>
+					<article class="stat reveal">
+						<b data-prefix="US$ " data-count="63" data-suffix="M">0</b>
+						<h3>Faturamento no Brasil</h3>
+						<p>O mercado de e-sports no Brasil faturou entre US$ 63 e US$ 64 milhões em 2024, com destaque
+							para mídia, patrocínios e direitos de transmissão.</p>
+					</article>
+					<article class="stat reveal">
+						<b data-count="70" data-suffix="M+">0</b>
+						<h3>Pessoas conectadas</h3>
+						<p>Uma audiência que consome, comenta e compartilha — todos os dias, em todas as telas.</p>
+					</article>
+				</div>
+			</div>
+		</section>
 
-								</article>
+		<!-- ============================ COMUNIDADE ============================ -->
+		<section class="section" id="comunidade">
+			<div class="wrap split split-reverse">
+				<div class="split-copy reveal">
+					<p class="eyebrow">05 — Comunidade</p>
+					<h2>Engajada e <span class="hl">em expansão</span></h2>
+					<p class="section-lead">
+						Com mais de 15.400 seguidores ativos no Instagram e um público fiel em constante crescimento, a
+						Amazon Rage constrói uma comunidade sólida, jovem e conectada com as maiores tendências do
+						universo gamer.
+					</p>
+					<div class="chips">
+						<a class="chip" href="https://www.instagram.com/amazonrage/" target="_blank"
+							rel="noopener">@amazonrage</a>
+						<a class="chip" href="https://www.instagram.com/rage.cast/" target="_blank"
+							rel="noopener">@rage.cast</a>
+						<span class="chip">YouTube</span>
+						<span class="chip">Twitch</span>
+						<span class="chip">Kwai</span>
+					</div>
+				</div>
 
-								<article id="pages" class="section-main doc-section">
-									<section id="blog">
-										<h3>Customize Blog data</h3>
-										<p>To customize blog data do the following:</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">src </span><span class="direction_step">data </span><span class="direction_step">blog-data.ts</span>
-												<span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the blog data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/site-blog.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the blog</figcaption>
-										</figure>
-									</section>
-									<section id="product">
-										<h3>Customize Product data</h3>
-										<p>To customize product data do the following:</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">src </span><span class="direction_step">data </span><span class="direction_step">product-data.ts</span>
-												<span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the product data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/site-product.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the products</figcaption>
-										</figure>
-									</section>
-
-								</article>
-
-								<article id="template_options" class="section-main doc-section">
-									<section id="option_header">
-										<h3>Customize Header</h3>
-										<p>We gave you four header layout. you can modify the header markup there.</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">src </span>
-													<span class="direction_step">layout </span>
-													<span class="direction_step">headers</span>
-													<span class="direction_step">header</span>
-												<span class="direction_step">Open the menu you want to use</span></span>
-											</li>
-												<li>Then customize the blog data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/site-header.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the header</figcaption>
-										</figure>
-									</section>
-
-									<section id="option_color">
-										<h3>Colors</h3>
-										<p>To change color and setting you can change by following this screenshot here.</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">public </span>
-													<span class="direction_step">assets</span>
-													<span class="direction_step">scss</span>
-													<span class="direction_step">utils</span>
-													<span class="direction_step">colors.scss</span>
-												<span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the color data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/chnage-colors.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the color</figcaption>
-										</figure>
-									</section>
-									<section id="option_typo">
-										<h3>Typography</h3>
-										<p>To change Typography and setting you can change by following this screenshot here.</p>
-										<div class="steps-panel">
-											<ol class="ordered-list">
-												<li>From the project folder go to <span class="direction_steps">
-													<span class="direction_step">public </span>
-													<span class="direction_step">assets</span>
-													<span class="direction_step">scss</span>
-													<span class="direction_step">utils</span>
-													<span class="direction_step">typography.scss</span>
-												<span class="direction_step">Open the menu you want to use</span></span></li>
-												<li>Then customize the Typography data</li>
-											</ol>
-										</div>
-										<figure>
-											<img src="assets/images/typo.png" alt="3.1.1" class="doc-image">
-											<figcaption class="text-center">Customize the Typography</figcaption>
-										</figure>
-									</section>
-								</article>
-
-								<article id="support" class="section-main doc-section">
-									<section>
-									<h3>Support</h3>
-										<p style="color:red;font-weight:bold;">If you face any issue please contact us at
-											<a class="black-color" href="https://themeforest.net/user/themegenix">Support Ticket</a>. We provide 15 hours real-time support for our customers.</p>
-										<p>Thank you for purchasing our template.</p>
-										<p class="mt50"></p>
-									</section>
-								</article>
-								<!-- End of #getting_started1-4 -->
-
+				<div class="split-copy reveal">
+					<div class="ig-card">
+						<div class="ig-head">
+							<img src="/assets/img/logo.png" alt="" width="72" height="61">
+							<div>
+								<strong>Amazon Rage</strong>
+								<span>@amazonrage</span>
 							</div>
-
-
-
-							<!-- End of .filterable-wrapper -->
-						</main>
+						</div>
+						<ul class="ig-numbers">
+							<li><b>248</b><span>publicações</span></li>
+							<li><b>15,4 mil</b><span>seguidores</span></li>
+							<li><b>144</b><span>seguindo</span></li>
+						</ul>
+						<p class="ig-bio">
+							🥇 Reis do Norte<br>
+							🏆 Focada no competitivo<br>
+							🌐 Follow | @fenesp.am<br>
+							🎮 Master: @xbullbet<br>
+							🎙 PodCast Oficial: @rage.cast
+						</p>
+						<a class="btn btn-primary btn-block" href="https://www.instagram.com/amazonrage/" target="_blank"
+							rel="noopener">Seguir no Instagram</a>
 					</div>
 				</div>
 			</div>
-			<!-- End of .main-content -->
+		</section>
+
+		<!-- ============================ PARCEIRO DE MÍDIA ============================ -->
+		<section class="section section-alt" id="midia">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">06 — Parceiro de mídia</p>
+					<h2>Conexão <span class="hl">Amazonas</span></h2>
+					<p class="section-lead">
+						Fundado em 2012, o portal Conexão Amazonas apresenta notícias de fonte segura diariamente, em
+						coordenação com as melhores agências de notícias do Brasil. Em 2024 lançou sua rádio web, com
+						programação musical, notícias e variedades.
+					</p>
+				</header>
+
+				<div class="stats-grid stats-inline">
+					<article class="stat reveal">
+						<b data-count="30" data-suffix="K+">0</b>
+						<h3>Visualizações diárias</h3>
+					</article>
+					<article class="stat reveal">
+						<b data-count="50" data-suffix="+">0</b>
+						<h3>Matérias por dia</h3>
+					</article>
+					<article class="stat reveal">
+						<b data-count="2012" data-raw="true">0</b>
+						<h3>Ano de fundação</h3>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ BENEFÍCIOS ============================ -->
+		<section class="section" id="beneficios">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">07 — Benefícios do patrocinador</p>
+					<h2>O que a sua marca <span class="hl">ganha</span></h2>
+					<p class="section-lead">
+						Com o patrocínio da Amazon Rage, sua marca alcança o público jovem, conectado e apaixonado por
+						games, ganhando visibilidade constante em diversos canais.
+					</p>
+				</header>
+
+				<div class="benefits">
+					<article class="benefit reveal">
+						<span class="benefit-num">01</span>
+						<h3>Transmissões oficiais</h3>
+						<p>Comerciais e logotipo nas transmissões ao vivo no YouTube, Twitch e Kwai, com destaque durante
+							as partidas.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">02</span>
+						<h3>Podcast</h3>
+						<p>Presença da sua marca no Rage Cast, que conecta e diverte o público jovem.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">03</span>
+						<h3>Conexão Amazonas</h3>
+						<p>Divulgação em formato de notícia patrocinada no blog regional, com foco no Amazonas.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">04</span>
+						<h3>Uniformes</h3>
+						<p>Inserção da sua logo nos uniformes e camisas oficiais da equipe.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">05</span>
+						<h3>Site institucional</h3>
+						<p>Presença destacada neste site oficial, visível para toda a base e para novos parceiros.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">06</span>
+						<h3>Campanhas com influencers</h3>
+						<p>Menções e marcações em campanhas no Instagram, com mais de 15.400 seguidores engajados.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">07</span>
+						<h3>Eventos e campeonatos</h3>
+						<p>Participação da sua marca em todos os eventos e campeonatos oficiais que a Amazon Rage
+							disputar.</p>
+					</article>
+					<article class="benefit reveal">
+						<span class="benefit-num">08</span>
+						<h3>Conteúdo original</h3>
+						<p>Conteúdo criativo produzido por profissionais, com linguagem jovem e inteligente.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ PLANOS ============================ -->
+		<section class="section section-alt" id="patrocinio">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">08 — Planos de patrocínio</p>
+					<h2>Escolha o seu <span class="hl">nível de exposição</span></h2>
+					<p class="section-lead">
+						Três formatos de parceria, com contrato de 12 meses e cotas limitadas.
+					</p>
+				</header>
+
+				<div class="plans">
+					<article class="plan reveal">
+						<header>
+							<h3>Apoiador</h3>
+							<p class="plan-price">R$ 2.500<span>,00</span></p>
+							<p class="plan-quota">4 cotas disponíveis</p>
+						</header>
+						<ul>
+							<li>Live semanal (2h): menção nominal na abertura ou encerramento</li>
+							<li>Marca na transmissão: logo em VT comercial conjunto</li>
+							<li>Stories nas redes sociais</li>
+							<li>Camisas da equipe: logo em posição menor (12 meses)</li>
+							<li>Eventos presenciais: presença em materiais de divulgação geral</li>
+						</ul>
+						<a class="btn btn-ghost btn-block" href="#contato" data-plan="Apoiador">Quero este plano</a>
+					</article>
+
+					<article class="plan plan-featured reveal">
+						<span class="plan-flag">Mais completo</span>
+						<header>
+							<h3>Master</h3>
+							<p class="plan-price">R$ 8.000<span>,00</span></p>
+							<p class="plan-quota">1 cota exclusiva</p>
+						</header>
+						<ul>
+							<li>Live semanal (2h): exposição de marca em destaque (sobreposição fixa + menções do
+								narrador e comentarista)</li>
+							<li>Marca na transmissão: inserção no VT comercial, merchandising e cortes promocionais com
+								assinatura</li>
+							<li>Postagens nas redes sociais: posts dedicados + stories + Reels com tráfego pago
+								direcionado</li>
+							<li>Camisas da equipe: logo em posição de maior destaque (12 meses)</li>
+							<li>Eventos presenciais: destaque máximo no palco, banners e ativações de marca</li>
+							<li>Sorteios para engajamento: com menção exclusiva ao patrocinador master</li>
+						</ul>
+						<a class="btn btn-primary btn-block" href="#contato" data-plan="Master">Quero este plano</a>
+					</article>
+
+					<article class="plan reveal">
+						<header>
+							<h3>Oficial</h3>
+							<p class="plan-price">R$ 5.000<span>,00</span></p>
+							<p class="plan-quota">4 cotas disponíveis</p>
+						</header>
+						<ul>
+							<li>Live semanal (2h): exposição de marca (sobreposição fixa + menções pontuais)</li>
+							<li>Marca na transmissão: inserção no VT comercial e cortes promocionais com assinatura</li>
+							<li>Postagens nas redes sociais: posts compartilhados + stories da equipe com marca</li>
+							<li>Camisas da equipe: logo em posição secundária (12 meses)</li>
+							<li>Eventos presenciais: presença em backdrop, banners e telão</li>
+							<li>Sorteios para engajamento: participação conjunta com outros patrocinadores oficiais</li>
+						</ul>
+						<a class="btn btn-ghost btn-block" href="#contato" data-plan="Oficial">Quero este plano</a>
+					</article>
+				</div>
+
+				<p class="plans-note reveal">Formatos personalizados também podem ser negociados — fale com a gente.</p>
+			</div>
+		</section>
+
+		<!-- ============================ CONTATO ============================ -->
+		<section class="section section-contact" id="contato">
+			<div class="contact-bg" aria-hidden="true"></div>
+			<div class="wrap split">
+				<div class="split-copy reveal">
+					<p class="eyebrow">09 — Contato</p>
+					<h2>Junte-se aos <span class="hl">Reis do Norte</span></h2>
+					<p class="section-lead">
+						Estamos prontos para construir parcerias sólidas, inovadoras e de alto retorno para a sua marca.
+						Posicione sua empresa no cenário mais promissor da nova geração.
+					</p>
+
+					<ul class="contact-list">
+						<li>
+							<span>E-mail</span>
+							<a href="mailto:contato@amazonrage.com">contato@amazonrage.com</a>
+						</li>
+						<li>
+							<span>WhatsApp</span>
+							<a href="https://wa.me/5516982166580" target="_blank" rel="noopener">(16) 98216-6580</a>
+						</li>
+						<li>
+							<span>Instagram</span>
+							<a href="https://www.instagram.com/amazonrage/" target="_blank"
+								rel="noopener">@amazonrage</a>
+						</li>
+						<li>
+							<span>Base</span>
+							<a href="#topo">Amazonas — Brasil</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="split-copy reveal">
+					<form class="form" id="formPatrocinio" name="patrocinio" method="POST" data-netlify="true"
+						netlify-honeypot="bot-field">
+						<input type="hidden" name="form-name" value="patrocinio">
+						<p class="hp">
+							<label>Não preencha este campo: <input name="bot-field"></label>
+						</p>
+
+						<div class="field">
+							<label for="nome">Nome</label>
+							<input id="nome" name="nome" type="text" required autocomplete="name"
+								placeholder="Seu nome completo">
+						</div>
+
+						<div class="field-row">
+							<div class="field">
+								<label for="empresa">Empresa</label>
+								<input id="empresa" name="empresa" type="text" autocomplete="organization"
+									placeholder="Nome da marca">
+							</div>
+							<div class="field">
+								<label for="telefone">Telefone</label>
+								<input id="telefone" name="telefone" type="tel" autocomplete="tel"
+									placeholder="(00) 00000-0000">
+							</div>
+						</div>
+
+						<div class="field">
+							<label for="email">E-mail</label>
+							<input id="email" name="email" type="email" required autocomplete="email"
+								placeholder="voce@empresa.com">
+						</div>
+
+						<div class="field">
+							<label for="plano">Plano de interesse</label>
+							<select id="plano" name="plano">
+								<option value="Apoiador — R$ 2.500">Apoiador — R$ 2.500</option>
+								<option value="Oficial — R$ 5.000">Oficial — R$ 5.000</option>
+								<option value="Master — R$ 8.000">Master — R$ 8.000</option>
+								<option value="Formato personalizado" selected>Formato personalizado</option>
+							</select>
+						</div>
+
+						<div class="field">
+							<label for="mensagem">Mensagem</label>
+							<textarea id="mensagem" name="mensagem" rows="4"
+								placeholder="Conte o que a sua marca busca com o patrocínio"></textarea>
+						</div>
+
+						<button class="btn btn-primary btn-block" type="submit">Enviar proposta</button>
+						<p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-inner">
+			<div class="footer-brand">
+				<img src="/assets/img/logo.png" alt="Amazon Rage" width="120" height="102" loading="lazy">
+				<p>A primeira organização de e-sports do Amazonas que paga salário aos seus atletas.
+					<strong>#reisdonorte</strong>
+				</p>
+			</div>
+
+			<nav class="footer-nav" aria-label="Navegação do rodapé">
+				<h2>Navegar</h2>
+				<a href="#sobre">Quem somos</a>
+				<a href="#elenco">Elenco</a>
+				<a href="#ragecast">Rage Cast</a>
+				<a href="#beneficios">Benefícios</a>
+				<a href="#patrocinio">Planos</a>
+			</nav>
+
+			<div class="footer-contact">
+				<h2>Contato</h2>
+				<a href="mailto:contato@amazonrage.com">contato@amazonrage.com</a>
+				<a href="https://wa.me/5516982166580" target="_blank" rel="noopener">(16) 98216-6580</a>
+				<a href="https://www.instagram.com/amazonrage/" target="_blank" rel="noopener">@amazonrage</a>
+			</div>
 		</div>
-		<!-- End of .container -->
-	</div>
-	<!-- End of .main-content -->
 
-	<footer class="tp-footer">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-8">
-					<div class="page-footer">
-						<p>© 2025 All Rights Reserved by <a href="https://themeforest.net/user/themegenix/portfolio">ThemeGenix</a>.</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="social-footer text-md-right">
-						<a href="#"><i class="social_youtube"></i></a>
-					</div>
-				</div>
-			</div>
+		<div class="wrap footer-bottom">
+			<p>© <span id="ano">2026</span> Amazon Rage E-Sports. Todos os direitos reservados.</p>
+			<a href="#topo" class="to-top">Voltar ao topo ↑</a>
 		</div>
 	</footer>
 
-
-	<!-- End of .page-footer -->
-
-	<!-- Javascripts
-		======================================= -->
-	<!-- jQuery -->
-	<script src="assets/js/vendor/jquery.min.js"></script>
-	<script src="assets/js/vendor/jquery-migrate.min.js"></script>
-	<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<!-- jQuery Easing Plugin -->
-	<script src="assets/js/vendor/easing-1.3.js"></script>
-	<!-- Custom Script -->
-	<script src="assets/js/onpage-menu.js"></script>
-	<script src="assets/js/main.js"></script>
-
+	<script src="/assets/js/main.js" defer></script>
 </body>
+
 </html>

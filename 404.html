@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Página não encontrada | Amazon Rage E-Sports</title>
+	<meta name="robots" content="noindex">
+	<meta name="theme-color" content="#07090B">
+	<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<style>
+		.error-page {
+			min-height: 100svh;
+			display: grid;
+			place-items: center;
+			text-align: center;
+			padding: 40px 0;
+		}
+
+		.error-page img {
+			width: min(220px, 50vw);
+			margin: 0 auto 28px;
+			filter: drop-shadow(0 0 50px rgba(0, 199, 102, .4));
+		}
+
+		.error-code {
+			font-family: var(--font-head);
+			font-size: clamp(5rem, 22vw, 12rem);
+			line-height: .85;
+			background: linear-gradient(100deg, var(--lime), var(--green));
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		.error-page h1 {
+			font-size: clamp(1.6rem, 5vw, 2.6rem);
+			margin: 18px 0 14px;
+		}
+
+		.error-page p {
+			color: var(--muted);
+			max-width: 44ch;
+			margin: 0 auto 32px;
+		}
+	</style>
+</head>
+
+<body>
+	<main class="error-page">
+		<div class="wrap">
+			<img src="/assets/img/logo.png" alt="Amazon Rage" width="220" height="187">
+			<p class="error-code">404</p>
+			<h1>Essa página saiu da partida</h1>
+			<p>O link que você abriu não existe ou foi movido. Volte para a base e continue de lá.</p>
+			<a class="btn btn-primary" href="/">Voltar para o início</a>
+		</div>
+	</main>
+</body>
+
+</html>

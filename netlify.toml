@@ -1,0 +1,78 @@
+# =============================================================
+# Amazon Rage E-Sports — configuração de deploy do Netlify
+# Site estático puro: não há etapa de build, o Netlify apenas
+# publica o conteúdo da raiz do repositório.
+# =============================================================
+
+[build]
+publish = "."
+
+# ------------------------------------------------------------
+# Cabeçalhos
+# ------------------------------------------------------------
+
+[[headers]]
+for = "/*"
+
+	[headers.values]
+	X-Frame-Options = "DENY"
+	X-Content-Type-Options = "nosniff"
+	Referrer-Policy = "strict-origin-when-cross-origin"
+	Permissions-Policy = "geolocation=(), camera=(), microphone=(), interest-cohort=()"
+	Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Imagens não mudam de nome, mas também quase nunca mudam de conteúdo:
+# cache longo com revalidação automática pelo ETag do Netlify.
+[[headers]]
+for = "/assets/img/*"
+
+	[headers.values]
+	Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+for = "/assets/fonts/*"
+
+	[headers.values]
+	Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS e JS ficam sem fingerprint no nome do arquivo, então mantemos
+# a revalidação a cada visita para que um deploy novo apareça na hora.
+[[headers]]
+for = "/assets/css/*"
+
+	[headers.values]
+	Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/assets/js/*"
+
+	[headers.values]
+	Cache-Control = "public, max-age=0, must-revalidate"
+
+# ------------------------------------------------------------
+# Atalhos de divulgação (links curtos para bio, flyer, QR code)
+# ------------------------------------------------------------
+
+[[redirects]]
+from = "/instagram"
+to = "https://www.instagram.com/amazonrage/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/whatsapp"
+to = "https://wa.me/5516982166580"
+status = 301
+force = true
+
+[[redirects]]
+from = "/podcast"
+to = "https://www.instagram.com/rage.cast/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/patrocinio"
+to = "/#patrocinio"
+status = 302
+force = true
