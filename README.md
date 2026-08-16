@@ -71,6 +71,28 @@ bloco e troque:
 O `.sr-only` dentro do placar existe para leitores de tela — o "2 × 0"
 visual não é lido de forma compreensível, então há uma versão em texto.
 
+### Destaques e card de compartilhamento
+
+O botão **Ver mais detalhes** é um `<details>` nativo do HTML: abre e fecha
+sozinho, sem JavaScript. Dentro dele fica um `<article class="mvp">` por
+jogo da série, com foto, nome e os três números.
+
+O botão **Compartilhar card** gera um **JPEG 1080×1080** no próprio
+navegador, com canvas — não há servidor nem serviço externo envolvido:
+
+- no celular abre a bandeja de compartilhamento do sistema (Instagram,
+  WhatsApp, etc.) via Web Share API;
+- no computador, onde essa API não aceita arquivos, o card é baixado.
+
+Os dados do card são **lidos do próprio HTML** do destaque — nome, jogo,
+foto e os três números. Não existe lista duplicada em JavaScript: editar o
+HTML já muda o card gerado. O nome diminui de corpo sozinho se for longo.
+
+A arte fica em `desenharCard()` no `main.js`. As fotos precisam estar no
+mesmo domínio, senão o navegador bloqueia a exportação do canvas.
+
+Fotos dos destaques ficam em `assets/img/mvp/`, quadradas, 640 px.
+
 ### Escudos dos times convidados
 
 Ficam em `assets/img/teams/`. A logo da Fera veio como PNG branco sobre

@@ -362,6 +362,208 @@
 		});
 	}
 
+	/* ---------------------------------------- card de compartilhamento
+	   Monta um JPEG 1080x1080 no próprio navegador, a partir dos dados que
+	   já estão no HTML do destaque. No celular abre a bandeja de
+	   compartilhamento do sistema; no computador baixa o arquivo. */
+
+	var LADO = 1080;
+
+	function carregarImagem(src) {
+		return new Promise(function (ok, erro) {
+			var img = new Image();
+			img.onload = function () { ok(img); };
+			img.onerror = erro;
+			img.src = src;
+		});
+	}
+
+	function cobrir(ctx, img, x, y, w, h) {
+		var escala = Math.max(w / img.width, h / img.height);
+		var lw = img.width * escala;
+		var lh = img.height * escala;
+		ctx.drawImage(img, x + (w - lw) / 2, y + (h - lh) / 2, lw, lh);
+	}
+
+	function desenharCard(dados, foto, escudo) {
+		var c = document.createElement("canvas");
+		c.width = c.height = LADO;
+		var ctx = c.getContext("2d");
+
+		ctx.fillStyle = "#07090b";
+		ctx.fillRect(0, 0, LADO, LADO);
+		cobrir(ctx, foto, 0, 0, LADO, LADO);
+
+		// escurece a base para o texto respirar
+		var base = ctx.createLinearGradient(0, LADO * .3, 0, LADO);
+		base.addColorStop(0, "rgba(7,9,11,0)");
+		base.addColorStop(.45, "rgba(7,9,11,.82)");
+		base.addColorStop(1, "rgba(7,9,11,.98)");
+		ctx.fillStyle = base;
+		ctx.fillRect(0, 0, LADO, LADO);
+
+		// brilho da marca, colado no canto para não esverdear o rosto
+		var brilho = ctx.createRadialGradient(LADO * .94, -LADO * .08, 0, LADO * .94, -LADO * .08, LADO * .62);
+		brilho.addColorStop(0, "rgba(0,199,102,.30)");
+		brilho.addColorStop(1, "rgba(0,199,102,0)");
+		ctx.fillStyle = brilho;
+		ctx.fillRect(0, 0, LADO, LADO);
+
+		// faixas diagonais no canto inferior direito
+		ctx.fillStyle = "rgba(199,245,30,.85)";
+		for (var i = 0; i < 4; i++) {
+			var x = LADO - 190 + i * 34;
+			ctx.beginPath();
+			ctx.moveTo(x, LADO);
+			ctx.lineTo(x + 14, LADO);
+			ctx.lineTo(x + 14 + 44, LADO - 120);
+			ctx.lineTo(x + 44, LADO - 120);
+			ctx.closePath();
+			ctx.fill();
+		}
+
+		ctx.drawImage(escudo, 56, 50, 118, 118 * escudo.height / escudo.width);
+
+		ctx.textBaseline = "alphabetic";
+		ctx.fillStyle = "#c7f51e";
+		ctx.font = '600 26px "Chakra Petch", sans-serif';
+		ctx.fillText("RAGEMATCH", 190, 96);
+		ctx.fillStyle = "rgba(238,243,239,.75)";
+		ctx.font = '500 24px "Barlow", sans-serif';
+		ctx.fillText("#reisdonorte", 190, 130);
+
+		var base_y = 700;
+
+		ctx.fillStyle = "#00c766";
+		ctx.font = '600 24px "Chakra Petch", sans-serif';
+		ctx.fillText(dados.papel.toUpperCase() + " · " + dados.jogo.toUpperCase(), 60, base_y);
+
+		ctx.fillStyle = "#c7f51e";
+		var tamanho = 104;
+		ctx.font = '700 ' + tamanho + 'px "Chakra Petch", sans-serif';
+		while (ctx.measureText(dados.nome.toUpperCase()).width > LADO - 120 && tamanho > 48) {
+			tamanho -= 4;
+			ctx.font = '700 ' + tamanho + 'px "Chakra Petch", sans-serif';
+		}
+		ctx.fillText(dados.nome.toUpperCase(), 58, base_y + 96);
+
+		// números lado a lado
+		var col = 60;
+		dados.numeros.forEach(function (n, i) {
+			if (i) {
+				ctx.fillStyle = "rgba(238,243,239,.16)";
+				ctx.fillRect(col - 26, base_y + 148, 2, 68);
+			}
+			ctx.fillStyle = "#eef3ef";
+			ctx.font = '700 62px "Chakra Petch", sans-serif';
+			ctx.fillText(n.valor, col, base_y + 202);
+			var largura = ctx.measureText(n.valor).width;
+
+			ctx.fillStyle = "#93a29b";
+			ctx.font = '500 22px "Barlow", sans-serif';
+			ctx.fillText(n.rotulo.toUpperCase(), col, base_y + 236);
+			col += Math.max(largura, ctx.measureText(n.rotulo.toUpperCase()).width) + 66;
+		});
+
+		ctx.fillStyle = "rgba(199,245,30,.9)";
+		ctx.fillRect(60, LADO - 118, 120, 3);
+
+		ctx.fillStyle = "#eef3ef";
+		ctx.font = '600 26px "Chakra Petch", sans-serif';
+		ctx.fillText(dados.partida.toUpperCase(), 60, LADO - 72);
+		ctx.fillStyle = "#93a29b";
+		ctx.font = '500 22px "Barlow", sans-serif';
+		ctx.fillText("@amazonrage · amazonrage.netlify.app", 60, LADO - 38);
+
+		return c;
+	}
+
+	function lerDestaque(mvp) {
+		var numeros = [];
+		mvp.querySelectorAll(".mvp-stats li").forEach(function (li) {
+			numeros.push({
+				valor: li.querySelector("b").textContent.trim(),
+				rotulo: li.querySelector("span").textContent.trim()
+			});
+		});
+
+		var partida = mvp.closest(".match-details");
+
+		return {
+			nome: mvp.querySelector(".mvp-name").textContent.trim(),
+			papel: mvp.querySelector(".mvp-role").textContent.trim(),
+			jogo: mvp.querySelector(".mvp-game").textContent.trim(),
+			foto: mvp.querySelector(".mvp-photo img").getAttribute("src"),
+			partida: partida ? partida.dataset.match : "Amazon Rage",
+			numeros: numeros
+		};
+	}
+
+	function semAcento(txt) {
+		return txt.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+			.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, "").toLowerCase();
+	}
+
+	document.querySelectorAll(".btn-share").forEach(function (botao) {
+		botao.addEventListener("click", function () {
+			var mvp = botao.closest(".mvp");
+			if (!mvp || botao.disabled) return;
+
+			var original = botao.innerHTML;
+			botao.disabled = true;
+			botao.textContent = "Gerando...";
+
+			var dados = lerDestaque(mvp);
+
+			var fontes = document.fonts
+				? Promise.all([
+					document.fonts.load('700 104px "Chakra Petch"'),
+					document.fonts.load('600 26px "Chakra Petch"'),
+					document.fonts.load('500 24px "Barlow"')
+				])
+				: Promise.resolve();
+
+			Promise.all([fontes, carregarImagem(dados.foto), carregarImagem("/assets/img/logo.png")])
+				.then(function (r) {
+					var canvas = desenharCard(dados, r[1], r[2]);
+					return new Promise(function (ok) { canvas.toBlob(ok, "image/jpeg", .92); });
+				})
+				.then(function (blob) {
+					if (!blob) throw new Error("sem imagem");
+					var nome = "amazonrage-" + semAcento(dados.nome) + ".jpg";
+					var arquivo = new File([blob], nome, { type: "image/jpeg" });
+
+					if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+						return navigator.share({
+							files: [arquivo],
+							title: dados.nome + " — " + dados.partida,
+							text: dados.nome + " foi destaque no RageMatch. #reisdonorte"
+						}).then(function () { botao.textContent = "Compartilhado!"; });
+					}
+
+					var url = URL.createObjectURL(blob);
+					var link = document.createElement("a");
+					link.href = url;
+					link.download = nome;
+					document.body.appendChild(link);
+					link.click();
+					link.remove();
+					setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+					botao.textContent = "Card baixado!";
+				})
+				.catch(function (e) {
+					// cancelar a bandeja do sistema não é erro
+					botao.textContent = (e && e.name === "AbortError") ? "Compartilhar card" : "Não deu certo";
+				})
+				.then(function () {
+					setTimeout(function () {
+						botao.innerHTML = original;
+						botao.disabled = false;
+					}, 2200);
+				});
+		});
+	});
+
 	/* ---------------------------------------- planos -> formulário */
 
 	var planoSelect = document.getElementById("plano");
