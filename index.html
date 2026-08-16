@@ -228,6 +228,60 @@
 	<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
 	<div class="scanlines" aria-hidden="true"></div>
 
+	<!-- Trilha sonora. Fica escondido até o áudio carregar: se o arquivo não
+	     existir, nada aparece. O nome exibido vem de data-titulo e o arquivo
+	     de data-fonte — trocar a música é mexer só nesta linha. -->
+	<aside class="trilha" id="player" hidden data-fonte="/assets/audio/tema-amazon-rage.mp3"
+		data-titulo="Tema oficial">
+		<button class="trilha-botao" id="playerToggle" type="button" aria-expanded="false"
+			aria-controls="playerPanel">
+			<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+			<span class="sr-only">Controles da trilha sonora</span>
+		</button>
+
+		<div class="trilha-painel" id="playerPanel">
+			<p class="trilha-faixa">
+				<span>Tocando agora</span>
+				<strong id="playerTitulo">Tema oficial</strong>
+			</p>
+
+			<div class="trilha-controles">
+				<button class="trilha-btn" id="playerPlay" type="button" aria-label="Tocar trilha">
+					<svg class="icone-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"
+						aria-hidden="true">
+						<path d="M7 4.5v15l13-7.5z" />
+					</svg>
+					<svg class="icone-pausa" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"
+						aria-hidden="true">
+						<path d="M7 4.5h4v15H7zM13 4.5h4v15h-4z" />
+					</svg>
+				</button>
+
+				<button class="trilha-btn" id="playerMudo" type="button" aria-label="Silenciar trilha">
+					<svg class="icone-som" viewBox="0 0 24 24" width="15" height="15" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+						aria-hidden="true">
+						<path d="M4 9v6h4l5 4V5L8 9z" />
+						<path d="M17 8.5a5 5 0 0 1 0 7" />
+					</svg>
+					<svg class="icone-mudo" viewBox="0 0 24 24" width="15" height="15" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+						aria-hidden="true">
+						<path d="M4 9v6h4l5 4V5L8 9z" />
+						<path d="m17 9.5 4 5M21 9.5l-4 5" />
+					</svg>
+				</button>
+
+				<input class="trilha-volume" id="playerVolume" type="range" min="0" max="100" value="35" step="1"
+					aria-label="Volume da trilha">
+			</div>
+
+			<p class="trilha-aviso" id="playerAviso">Clique para ouvir</p>
+		</div>
+
+		<audio id="playerAudio" loop preload="auto"></audio>
+	</aside>
+
 	<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 	<header class="site-header" id="topo">
@@ -807,11 +861,53 @@
 			</div>
 		</div>
 
+		<!-- ============================ MÚSICA ============================ -->
+		<section class="section section-clip" id="clipe">
+			<div class="clip-bg" aria-hidden="true"></div>
+
+			<div class="wrap split">
+				<div class="split-copy reveal">
+					<p class="eyebrow">05 — Música</p>
+					<h2>O nosso som é <span class="hl">autoral</span></h2>
+					<p class="section-lead">
+						A Amazon Rage tem <strong>duas músicas próprias</strong> e um clipe oficial — feitos para a
+						torcida cantar nas transmissões, nos eventos e nos bastidores. É a trilha que toca aqui no
+						site enquanto você navega.
+					</p>
+
+					<ul class="feature-list">
+						<li>
+							<h3>Identidade que se ouve</h3>
+							<p>Antes de ser um time, a Amazon Rage é um movimento. A música carrega o
+								<strong>#reisdonorte</strong> para além da tela.
+							</p>
+						</li>
+						<li>
+							<h3>Presente em toda transmissão</h3>
+							<p>Abertura, intervalos e cortes promocionais usam o nosso som — e a marca do patrocinador
+								entra junto.</p>
+						</li>
+					</ul>
+				</div>
+
+				<div class="split-copy reveal">
+					<button class="clip-card" type="button" data-video="Cr1o-cuWmlc"
+						data-title="Clipe oficial da Amazon Rage">
+						<img src="https://i.ytimg.com/vi/Cr1o-cuWmlc/hqdefault.jpg" alt="" width="480" height="360"
+							loading="lazy">
+						<span class="ep-play" aria-hidden="true"></span>
+						<span class="ep-tag">Clipe oficial</span>
+						<span class="clip-caption">Assistir no YouTube</span>
+					</button>
+				</div>
+			</div>
+		</section>
+
 		<!-- ============================ IMPACTO ============================ -->
 		<section class="section section-alt" id="impacto">
 			<div class="wrap">
 				<header class="section-head reveal">
-					<p class="eyebrow">05 — Impacto do e-sports</p>
+					<p class="eyebrow">06 — Impacto do e-sports</p>
 					<h2>Um mercado que <span class="hl">não para de crescer</span></h2>
 				</header>
 
@@ -848,7 +944,7 @@
 		<section class="section" id="comunidade">
 			<div class="wrap split split-reverse">
 				<div class="split-copy reveal">
-					<p class="eyebrow">06 — Comunidade</p>
+					<p class="eyebrow">07 — Comunidade</p>
 					<h2>Engajada e <span class="hl">em expansão</span></h2>
 					<p class="section-lead">
 						Com mais de 15.400 seguidores ativos no Instagram e um público fiel em constante crescimento, a
@@ -897,7 +993,7 @@
 		<section class="section section-alt" id="midia">
 			<div class="wrap">
 				<header class="section-head reveal">
-					<p class="eyebrow">07 — Parceiro de mídia</p>
+					<p class="eyebrow">08 — Parceiro de mídia</p>
 					<h2>Conexão <span class="hl">Amazonas</span></h2>
 					<p class="section-lead">
 						Fundado em 2012, o portal Conexão Amazonas apresenta notícias de fonte segura diariamente, em
@@ -927,7 +1023,7 @@
 		<section class="section" id="beneficios">
 			<div class="wrap">
 				<header class="section-head reveal">
-					<p class="eyebrow">08 — Benefícios do patrocinador</p>
+					<p class="eyebrow">09 — Benefícios do patrocinador</p>
 					<h2>O que a sua marca <span class="hl">ganha</span></h2>
 					<p class="section-lead">
 						Com o patrocínio da Amazon Rage, sua marca alcança o público jovem, conectado e apaixonado por
@@ -986,7 +1082,7 @@
 		<section class="section section-alt" id="patrocinio">
 			<div class="wrap">
 				<header class="section-head reveal">
-					<p class="eyebrow">09 — Planos de patrocínio</p>
+					<p class="eyebrow">10 — Planos de patrocínio</p>
 					<h2>Escolha o seu <span class="hl">nível de exposição</span></h2>
 					<p class="section-lead">
 						Três formatos de parceria, com contrato de 12 meses e cotas limitadas. Os valores são
@@ -1063,7 +1159,7 @@
 		<section class="section" id="faq">
 			<div class="wrap">
 				<header class="section-head reveal">
-					<p class="eyebrow">10 — Perguntas frequentes</p>
+					<p class="eyebrow">11 — Perguntas frequentes</p>
 					<h2>Tudo sobre a <span class="hl">Amazon Rage</span></h2>
 					<p class="section-lead">
 						O que a equipe é, onde fica, o que disputa e como a sua marca entra nessa.
@@ -1128,7 +1224,7 @@
 			<div class="contact-bg" aria-hidden="true"></div>
 			<div class="wrap split">
 				<div class="split-copy reveal">
-					<p class="eyebrow">11 — Contato</p>
+					<p class="eyebrow">12 — Contato</p>
 					<h2>Junte-se aos <span class="hl">Reis do Norte</span></h2>
 					<p class="section-lead">
 						Estamos prontos para construir parcerias sólidas, inovadoras e de alto retorno para a sua marca.
@@ -1228,6 +1324,7 @@
 				<a href="#elenco">Elenco</a>
 				<a href="#ragematch">RageMatch</a>
 				<a href="#ragecast">Rage Cast</a>
+				<a href="#clipe">Clipe oficial</a>
 				<a href="#beneficios">Benefícios</a>
 				<a href="#patrocinio">Planos</a>
 				<a href="#faq">Perguntas frequentes</a>

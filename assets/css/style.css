@@ -1942,6 +1942,310 @@ a.chip:hover {
 	font-size: .95rem;
 }
 
+/* ---------------------------------------------- clipe oficial */
+
+.section-clip {
+	position: relative;
+	isolation: isolate;
+	border-block: 1px solid var(--line-soft);
+}
+
+.clip-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(70% 80% at 15% 100%, rgba(199, 245, 30, .12), transparent 60%),
+		radial-gradient(60% 70% at 90% 10%, rgba(0, 199, 102, .16), transparent 65%),
+		var(--ink-2);
+}
+
+.clip-card {
+	position: relative;
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	padding: 0;
+	overflow: hidden;
+	background: var(--ink-3);
+	border: 1px solid var(--line);
+	cursor: pointer;
+	clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
+	transition: transform .3s, border-color .3s;
+}
+
+.clip-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: brightness(.7) saturate(.95);
+	transition: transform .5s, filter .35s;
+}
+
+.clip-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 40%, rgba(7, 9, 11, .9) 92%);
+}
+
+.clip-card:hover,
+.clip-card:focus-visible {
+	transform: translateY(-6px);
+	border-color: var(--lime);
+}
+
+.clip-card:hover img,
+.clip-card:focus-visible img {
+	transform: scale(1.05);
+	filter: brightness(.85) saturate(1);
+}
+
+.clip-card .ep-play {
+	width: 74px;
+	height: 74px;
+}
+
+.clip-card .ep-play::before {
+	border-left-width: 20px;
+	border-block-width: 12px;
+}
+
+.clip-caption {
+	position: absolute;
+	left: 22px;
+	bottom: 18px;
+	z-index: 2;
+	font-family: var(--font-head);
+	font-size: .95rem;
+	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--white);
+	text-shadow: 0 2px 12px rgba(0, 0, 0, .9);
+}
+
+/* ---------------------------------------------- trilha sonora */
+
+.trilha {
+	position: fixed;
+	left: 0;
+	bottom: 24px;
+	z-index: 300;
+	display: flex;
+	align-items: stretch;
+	background: rgba(9, 12, 14, .94);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--line);
+	border-left: 0;
+	box-shadow: 0 16px 40px rgba(0, 0, 0, .5);
+	clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.trilha[hidden] {
+	display: none;
+}
+
+.trilha-botao {
+	display: grid;
+	place-items: center;
+	width: 52px;
+	padding: 0;
+	background: none;
+	border: 0;
+	border-right: 1px solid var(--line-soft);
+	color: var(--lime);
+	cursor: pointer;
+	transition: background .25s;
+}
+
+.trilha-botao:hover {
+	background: rgba(199, 245, 30, .1);
+}
+
+/* equalizador: as barras só dançam quando a trilha está tocando */
+.eq {
+	display: flex;
+	align-items: flex-end;
+	gap: 3px;
+	height: 20px;
+}
+
+.eq i {
+	width: 3px;
+	height: 30%;
+	background: currentColor;
+	transition: height .2s;
+}
+
+.trilha.is-playing .eq i {
+	animation: eq-bounce .9s ease-in-out infinite;
+}
+
+.trilha.is-playing .eq i:nth-child(2) {
+	animation-delay: .15s;
+}
+
+.trilha.is-playing .eq i:nth-child(3) {
+	animation-delay: .3s;
+}
+
+.trilha.is-playing .eq i:nth-child(4) {
+	animation-delay: .45s;
+}
+
+@keyframes eq-bounce {
+
+	0%,
+	100% {
+		height: 25%;
+	}
+
+	50% {
+		height: 100%;
+	}
+}
+
+.trilha-painel {
+	display: grid;
+	gap: 10px;
+	width: 0;
+	padding: 0;
+	overflow: hidden;
+	transition: width .3s ease, padding .3s ease;
+}
+
+.trilha.is-open .trilha-painel {
+	width: min(70vw, 232px);
+	padding: 14px 18px;
+}
+
+.trilha-faixa {
+	display: grid;
+	line-height: 1.25;
+}
+
+.trilha-faixa span {
+	font-family: var(--font-head);
+	font-size: 10px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--green);
+}
+
+.trilha-faixa strong {
+	font-family: var(--font-head);
+	font-size: .96rem;
+	text-transform: uppercase;
+	color: var(--white);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.trilha-controles {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.trilha-btn {
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	flex-shrink: 0;
+	padding: 0;
+	background: rgba(199, 245, 30, .08);
+	border: 1px solid var(--line);
+	color: var(--white);
+	cursor: pointer;
+	transition: color .2s, background .2s, border-color .2s;
+}
+
+.trilha-btn:hover {
+	color: #06110b;
+	background: var(--lime);
+	border-color: var(--lime);
+}
+
+.trilha-btn .icone-pausa,
+.trilha.is-playing .trilha-btn .icone-play {
+	display: none;
+}
+
+.trilha.is-playing .trilha-btn .icone-pausa {
+	display: block;
+}
+
+.trilha-btn .icone-mudo,
+.trilha.is-muted .trilha-btn .icone-som {
+	display: none;
+}
+
+.trilha.is-muted .trilha-btn .icone-mudo {
+	display: block;
+}
+
+.trilha-volume {
+	flex: 1;
+	min-width: 0;
+	height: 4px;
+	appearance: none;
+	background: rgba(238, 243, 239, .16);
+	cursor: pointer;
+}
+
+.trilha-volume::-webkit-slider-thumb {
+	appearance: none;
+	width: 13px;
+	height: 13px;
+	background: var(--lime);
+	border: 0;
+	cursor: pointer;
+}
+
+.trilha-volume::-moz-range-thumb {
+	width: 13px;
+	height: 13px;
+	background: var(--lime);
+	border: 0;
+	cursor: pointer;
+}
+
+.trilha-aviso {
+	font-size: .7rem;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.trilha.is-waiting .trilha-aviso {
+	color: var(--lime);
+}
+
+/* tocando, o nome já aparece acima: o aviso só serve quando está parada */
+.trilha.is-playing .trilha-aviso {
+	display: none;
+}
+
+@media (max-width: 560px) {
+	.trilha {
+		bottom: 14px;
+	}
+
+	.trilha-botao {
+		width: 46px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.trilha.is-playing .eq i {
+		animation: none;
+		height: 60%;
+	}
+}
+
 /* ---------------------------------------------- perguntas frequentes */
 
 .faq {

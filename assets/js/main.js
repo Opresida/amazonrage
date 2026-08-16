@@ -327,6 +327,7 @@
 		lightbox.hidden = false;
 		document.body.classList.add("modal-open");
 		lbClose.focus();
+		document.dispatchEvent(new CustomEvent("video:abriu"));
 	}
 
 	function fecharPlayer() {
@@ -334,6 +335,7 @@
 		lightbox.hidden = true;
 		lbFrame.textContent = "";
 		document.body.classList.remove("modal-open");
+		document.dispatchEvent(new CustomEvent("video:fechou"));
 		if (quemAbriu) {
 			quemAbriu.focus();
 			quemAbriu = null;
@@ -643,6 +645,139 @@
 					button.disabled = false;
 					button.textContent = original;
 				});
+		});
+	}
+
+	/* ---------------------------------------- trilha sonora
+	   Nenhum navegador deixa tocar com som antes de o visitante interagir
+	   com a página. Então tentamos tocar na abertura e, se for barrado,
+	   engatamos no primeiro clique ou tecla. A escolha de quem pausa ou
+	   silencia fica guardada e é respeitada nas próximas visitas. */
+
+	var trilha = document.getElementById("player");
+
+	if (trilha) {
+		var som = document.getElementById("playerAudio");
+		var btnPainel = document.getElementById("playerToggle");
+		var btnPlay = document.getElementById("playerPlay");
+		var btnMudo = document.getElementById("playerMudo");
+		var barra = document.getElementById("playerVolume");
+		var aviso = document.getElementById("playerAviso");
+		var pausadaPeloVideo = false;
+
+		function lembrar(chave, valor) {
+			try { localStorage.setItem("rage:" + chave, valor); } catch (e) { /* modo anônimo */ }
+		}
+		function lembrado(chave, padrao) {
+			try {
+				var v = localStorage.getItem("rage:" + chave);
+				return v === null ? padrao : v;
+			} catch (e) { return padrao; }
+		}
+
+		document.getElementById("playerTitulo").textContent = trilha.dataset.titulo || "Trilha oficial";
+
+		var volume = Number(lembrado("volume", 35));
+		var mudo = lembrado("mudo", "0") === "1";
+		som.volume = Math.min(Math.max(volume, 0), 100) / 100;
+		som.muted = mudo;
+		barra.value = volume;
+		trilha.classList.toggle("is-muted", mudo);
+		btnMudo.setAttribute("aria-label", mudo ? "Reativar som" : "Silenciar trilha");
+
+		function marcarTocando(tocando) {
+			trilha.classList.toggle("is-playing", tocando);
+			btnPlay.setAttribute("aria-label", tocando ? "Pausar trilha" : "Tocar trilha");
+			if (tocando) trilha.classList.remove("is-waiting");
+			else if (!trilha.classList.contains("is-waiting")) aviso.textContent = "Trilha pausada";
+		}
+
+		som.addEventListener("play", function () { marcarTocando(true); });
+		som.addEventListener("pause", function () { marcarTocando(false); });
+
+		// só mostramos o player depois que o arquivo responde
+		som.addEventListener("canplay", function () {
+			trilha.hidden = false;
+		}, { once: true });
+
+		som.addEventListener("error", function () {
+			trilha.hidden = true;
+		});
+
+		som.src = trilha.dataset.fonte;
+
+		function tocar() {
+			var p = som.play();
+			return p && p.catch ? p : Promise.resolve();
+		}
+
+		function esperarGesto() {
+			trilha.classList.add("is-waiting");
+			aviso.textContent = "Clique para ouvir";
+
+			var engatar = function () {
+				tocar().catch(function () { /* segue em silêncio */ });
+				document.removeEventListener("pointerdown", engatar);
+				document.removeEventListener("keydown", engatar);
+			};
+
+			document.addEventListener("pointerdown", engatar);
+			document.addEventListener("keydown", engatar);
+		}
+
+		// quem pausou na visita anterior não é surpreendido de novo
+		if (lembrado("trilha", "1") === "1") {
+			som.addEventListener("canplay", function () {
+				tocar().catch(esperarGesto);
+			}, { once: true });
+		} else {
+			aviso.textContent = "Trilha pausada";
+		}
+
+		btnPainel.addEventListener("click", function () {
+			var aberto = trilha.classList.toggle("is-open");
+			btnPainel.setAttribute("aria-expanded", String(aberto));
+		});
+
+		btnPlay.addEventListener("click", function () {
+			if (som.paused) {
+				lembrar("trilha", "1");
+				tocar().catch(esperarGesto);
+			} else {
+				lembrar("trilha", "0");
+				som.pause();
+			}
+		});
+
+		btnMudo.addEventListener("click", function () {
+			som.muted = !som.muted;
+			trilha.classList.toggle("is-muted", som.muted);
+			btnMudo.setAttribute("aria-label", som.muted ? "Reativar som" : "Silenciar trilha");
+			lembrar("mudo", som.muted ? "1" : "0");
+		});
+
+		barra.addEventListener("input", function () {
+			som.volume = barra.value / 100;
+			if (som.muted && barra.value > 0) {
+				som.muted = false;
+				trilha.classList.remove("is-muted");
+			}
+			lembrar("volume", barra.value);
+		});
+
+		// dois áudios ao mesmo tempo não dá: a trilha sai de cena pelo vídeo
+		document.addEventListener("video:abriu", function () {
+			if (!som.paused) {
+				pausadaPeloVideo = true;
+				som.pause();
+			}
+		});
+
+		document.addEventListener("video:fechou", function () {
+			if (pausadaPeloVideo) {
+				pausadaPeloVideo = false;
+				tocar().catch(function () { /* sem drama */ });
+			}
 		});
 	}
 

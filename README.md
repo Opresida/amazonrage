@@ -145,6 +145,27 @@ miniatura. Ao clicar, o player abre numa sobreposição usando o domínio
 `youtube-nocookie.com`. Ao fechar (`Esc`, botão ✕ ou clique fora), o
 iframe é destruído, o que interrompe a reprodução.
 
+## Trilha sonora
+
+Player flutuante no canto inferior esquerdo, com play/pause, volume e
+mudo. O arquivo vai em `assets/audio/` — veja o `LEIA-ME.md` de lá.
+
+**Sobre tocar sozinho ao abrir:** nenhum navegador permite áudio com som
+antes de o visitante interagir com a página. Não há como contornar. O que
+o site faz:
+
+1. tenta tocar assim que o áudio carrega;
+2. se o navegador barrar, mostra "Clique para ouvir" e engata no primeiro
+   clique ou tecla — inclusive o clique que pula a tela de carregamento;
+3. quem pausar não é surpreendido na visita seguinte: a escolha fica
+   guardada, junto com volume e mudo.
+
+Dois cuidados que já estão resolvidos:
+
+- Abrir um vídeo (RageMatch, Rage Cast ou o clipe) **pausa a trilha** e a
+  retoma ao fechar — nunca dois áudios ao mesmo tempo.
+- Se o arquivo não existir, o player **não aparece**.
+
 ## Efeitos de ambiente
 
 Todos desligam sozinhos com `prefers-reduced-motion`, e os que dependem do
@@ -170,12 +191,14 @@ cursor só rodam em telas com mouse (`hover: hover`):
 3. **Hall de ídolos** — elenco (Free Fire e Wild Rift)
 4. **RageMatch** — amistosos narrados e placar das partidas
 5. **Rage Cast** — o podcast oficial
-6. **Impacto do e-sports** — números do mercado
-7. **Comunidade** — Instagram e canais
-8. **Parceiro de mídia** — Conexão Amazonas
-9. **Benefícios do patrocinador** — 8 frentes de exposição
-10. **Planos de patrocínio** — Apoiador, Oficial e Master
-11. **Contato** — formulário de proposta e canais diretos
+6. **Música** — clipe oficial e as faixas autorais
+7. **Impacto do e-sports** — números do mercado
+8. **Comunidade** — Instagram e canais
+9. **Parceiro de mídia** — Conexão Amazonas
+10. **Benefícios do patrocinador** — 8 frentes de exposição
+11. **Planos de patrocínio** — Apoiador, Oficial e Master
+12. **Perguntas frequentes**
+13. **Contato** — formulário de proposta e canais diretos
 
 Todo o conteúdo veio da apresentação comercial oficial da equipe.
 
