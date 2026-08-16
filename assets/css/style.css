@@ -971,6 +971,21 @@ h3 {
 	transform: rotate(45deg);
 }
 
+/* partida de título ganha destaque em relação aos amistosos */
+.match-title {
+	border-color: rgba(199, 245, 30, .34);
+	box-shadow: var(--glow);
+}
+
+.match-state.is-title {
+	color: var(--lime);
+}
+
+.match-state.is-title::before {
+	background: var(--lime);
+	box-shadow: 0 0 12px rgba(199, 245, 30, .8);
+}
+
 .match-board {
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
@@ -990,16 +1005,20 @@ h3 {
 }
 
 .side-crest {
+	--crest: clamp(96px, 13vw, 148px);
 	display: grid;
 	place-items: center;
-	width: clamp(96px, 13vw, 148px);
-	height: clamp(96px, 13vw, 148px);
+	width: var(--crest);
+	height: var(--crest);
 }
 
+/* A altura vai em medida absoluta, não em 100%: dentro de um grid o
+   percentual volta a ser indefinido e a imagem cresce pela proporção.
+   Com object-fit, escudos de qualquer formato encaixam na mesma caixa. */
 .side-crest img {
-	max-width: 100%;
-	max-height: 100%;
-	width: auto;
+	width: 100%;
+	height: var(--crest);
+	object-fit: contain;
 	filter: drop-shadow(0 0 26px rgba(0, 0, 0, .7));
 }
 

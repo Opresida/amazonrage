@@ -394,6 +394,13 @@
 		ctx.fillRect(0, 0, LADO, LADO);
 		cobrir(ctx, foto, 0, 0, LADO, LADO);
 
+		// escurece o topo para o escudo e o rótulo lerem sobre foto clara
+		var topo = ctx.createLinearGradient(0, 0, 0, LADO * .26);
+		topo.addColorStop(0, "rgba(7,9,11,.8)");
+		topo.addColorStop(1, "rgba(7,9,11,0)");
+		ctx.fillStyle = topo;
+		ctx.fillRect(0, 0, LADO, LADO * .26);
+
 		// escurece a base para o texto respirar
 		var base = ctx.createLinearGradient(0, LADO * .3, 0, LADO);
 		base.addColorStop(0, "rgba(7,9,11,0)");
@@ -447,22 +454,43 @@
 		}
 		ctx.fillText(dados.nome.toUpperCase(), 58, base_y + 96);
 
-		// números lado a lado
+		// números lado a lado, encolhendo até caber na largura do card
+		var util = LADO - 120;
+
+		function medir(num, rot, folga) {
+			var total = 0;
+			dados.numeros.forEach(function (n, i) {
+				ctx.font = '700 ' + num + 'px "Chakra Petch", sans-serif';
+				var a = ctx.measureText(n.valor).width;
+				ctx.font = '500 ' + rot + 'px "Barlow", sans-serif';
+				var b = ctx.measureText(n.rotulo.toUpperCase()).width;
+				total += Math.max(a, b) + (i ? folga : 0);
+			});
+			return total;
+		}
+
+		var num = 62, rot = 22, folga = 66;
+		while (medir(num, rot, folga) > util && num > 30) {
+			num -= 3;
+			rot = Math.max(15, rot - 1);
+			folga = Math.max(28, folga - 5);
+		}
+
 		var col = 60;
 		dados.numeros.forEach(function (n, i) {
 			if (i) {
 				ctx.fillStyle = "rgba(238,243,239,.16)";
-				ctx.fillRect(col - 26, base_y + 148, 2, 68);
+				ctx.fillRect(col - folga / 2 - 1, base_y + 148, 2, num + 6);
 			}
 			ctx.fillStyle = "#eef3ef";
-			ctx.font = '700 62px "Chakra Petch", sans-serif';
+			ctx.font = '700 ' + num + 'px "Chakra Petch", sans-serif';
 			ctx.fillText(n.valor, col, base_y + 202);
 			var largura = ctx.measureText(n.valor).width;
 
 			ctx.fillStyle = "#93a29b";
-			ctx.font = '500 22px "Barlow", sans-serif';
+			ctx.font = '500 ' + rot + 'px "Barlow", sans-serif';
 			ctx.fillText(n.rotulo.toUpperCase(), col, base_y + 236);
-			col += Math.max(largura, ctx.measureText(n.rotulo.toUpperCase()).width) + 66;
+			col += Math.max(largura, ctx.measureText(n.rotulo.toUpperCase()).width) + folga;
 		});
 
 		ctx.fillStyle = "rgba(199,245,30,.9)";

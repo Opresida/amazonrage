@@ -61,7 +61,9 @@ bloco e troque:
 | O que | Onde |
 | ----- | ---- |
 | Formato | `.match-format` (MD1, MD3, MD5…) |
-| Modalidade | `.match-mode` |
+| Modalidade e campeonato | `.match-mode` |
+| Situação | `.match-state` (use `is-title` num título) |
+| Destaque do card | classe `match-title` no `<article>` |
 | Times | `.side-crest img` e o `<h3>` de cada lado |
 | Placar | os dois `<b>` dentro de `.match-score` |
 | Vencedor | classe `is-win` no `<b>` que venceu |
@@ -97,8 +99,15 @@ Fotos dos destaques ficam em `assets/img/mvp/`, quadradas, 640 px.
 
 Ficam em `assets/img/teams/`. A logo da Fera veio como PNG branco sobre
 fundo preto estrelado; o fundo foi convertido em transparência pelo
-brilho e os respingos de estrela removidos por tamanho de mancha. Para um
-novo time, o ideal é pedir o arquivo já com fundo transparente.
+brilho e os respingos de estrela removidos por tamanho de mancha. A do
+Manaus FC é colorida e tem contornos pretos por dentro, então o recorte
+foi por preenchimento a partir das bordas, parando no contorno claro do
+escudo. Para um novo time, o ideal é pedir o arquivo já com fundo
+transparente.
+
+Os escudos chegam em proporções bem diferentes — o da Fera é largo, o do
+Manaus é alto. A caixa `.side-crest` usa medida absoluta e `object-fit`
+justamente para que todos ocupem o mesmo espaço no placar.
 
 ## Carrossel de episódios do Rage Cast
 
