@@ -1312,6 +1312,21 @@ h3 {
 	text-transform: uppercase;
 }
 
+/* linha do título, no lugar onde as outras partidas trazem o botão */
+.match-cup {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+}
+
+.match-cup::before {
+	content: "";
+	width: 9px;
+	height: 9px;
+	background: linear-gradient(115deg, var(--lime), var(--green));
+	transform: rotate(45deg);
+}
+
 /* ---------------------------------------------- carrossel de episódios */
 
 .reel {
