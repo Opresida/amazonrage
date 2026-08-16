@@ -267,10 +267,15 @@ h3 {
 	font-weight: 600;
 	letter-spacing: .09em;
 	text-transform: uppercase;
+	white-space: nowrap;
 	color: var(--muted);
 	position: relative;
 	padding: 6px 0;
 	transition: color .2s;
+}
+
+.nav-cta {
+	white-space: nowrap;
 }
 
 .nav>a:not(.btn)::after {
@@ -297,6 +302,17 @@ h3 {
 .nav-cta {
 	padding: 11px 22px;
 	font-size: 13px;
+}
+
+@media (max-width: 1200px) {
+	.nav {
+		gap: 20px;
+	}
+
+	.nav>a:not(.btn) {
+		font-size: 13px;
+		letter-spacing: .06em;
+	}
 }
 
 .nav-toggle {
@@ -826,6 +842,252 @@ h3 {
 .feature-list p {
 	color: #a5afa9;
 	font-size: .95rem;
+}
+
+/* ---------------------------------------------- ragematch */
+
+.section-match {
+	position: relative;
+	isolation: isolate;
+	border-block: 1px solid var(--line-soft);
+}
+
+.match-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(90% 60% at 50% 0%, rgba(0, 199, 102, .16), transparent 65%),
+		linear-gradient(180deg, rgba(7, 9, 11, .94), rgba(7, 9, 11, .97)),
+		url("/assets/img/arena.jpg") center/cover no-repeat;
+}
+
+/* narrador */
+
+.caster {
+	display: flex;
+	align-items: flex-start;
+	gap: 22px;
+	padding: 28px 30px;
+	margin-bottom: 30px;
+	background: linear-gradient(110deg, rgba(199, 245, 30, .1), rgba(12, 16, 19, .75));
+	border: 1px solid var(--line);
+	border-left: 3px solid var(--lime);
+}
+
+.caster-icon {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 62px;
+	height: 62px;
+	color: #06110b;
+	background: linear-gradient(115deg, var(--lime), var(--green));
+	clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.caster-role {
+	font-family: var(--font-head);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .24em;
+	text-transform: uppercase;
+	color: var(--green);
+	margin-bottom: 4px;
+}
+
+.caster h3 {
+	font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+	color: var(--lime);
+	margin-bottom: 10px;
+}
+
+.caster-copy p:last-child {
+	color: #b7c1bb;
+	max-width: 66ch;
+	font-size: .97rem;
+}
+
+.caster-copy strong {
+	color: var(--white);
+}
+
+/* placar */
+
+.matches {
+	display: grid;
+	gap: 20px;
+}
+
+.match {
+	background: rgba(9, 12, 14, .82);
+	border: 1px solid var(--line-soft);
+	clip-path: polygon(var(--notch) 0, 100% 0, 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, 0 100%, 0 var(--notch));
+	transition: border-color .28s;
+}
+
+.match:hover {
+	border-color: var(--line);
+}
+
+.match-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 16px;
+	padding: 14px 26px;
+	border-bottom: 1px solid var(--line-soft);
+	font-family: var(--font-head);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.match-format {
+	background: var(--lime);
+	color: #06110b;
+	padding: 4px 12px;
+	clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.match-mode {
+	color: #b7c1bb;
+}
+
+.match-state {
+	margin-left: auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.match-state::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	background: var(--green);
+	transform: rotate(45deg);
+}
+
+.match-board {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: stretch;
+	gap: clamp(12px, 3vw, 40px);
+	padding: clamp(28px, 4vw, 44px) 26px;
+}
+
+/* A linha do meio estica: assim os selos ficam alinhados mesmo quando o
+   nome de um dos times ocupa duas linhas. */
+.side {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	justify-items: center;
+	gap: 12px;
+	text-align: center;
+}
+
+.side-crest {
+	display: grid;
+	place-items: center;
+	width: clamp(96px, 13vw, 148px);
+	height: clamp(96px, 13vw, 148px);
+}
+
+.side-crest img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	filter: drop-shadow(0 0 26px rgba(0, 0, 0, .7));
+}
+
+.side h3 {
+	font-size: clamp(.95rem, 2vw, 1.3rem);
+	letter-spacing: .02em;
+}
+
+.side-badge {
+	font-family: var(--font-head);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	padding: 5px 14px;
+	color: #06110b;
+	background: linear-gradient(115deg, var(--lime), var(--green));
+	clip-path: polygon(7px 0, 100% 0, calc(100% - 7px) 100%, 0 100%);
+}
+
+.side-badge.is-muted {
+	background: none;
+	color: var(--muted);
+	border: 1px solid var(--line-soft);
+	clip-path: none;
+}
+
+.match-score {
+	display: flex;
+	align-self: center;
+	align-items: center;
+	gap: clamp(8px, 1.6vw, 18px);
+	font-family: var(--font-head);
+	font-weight: 700;
+	line-height: 1;
+}
+
+.match-score b {
+	font-size: clamp(2.8rem, 8vw, 5rem);
+	color: var(--muted);
+}
+
+.match-score b.is-win {
+	background: linear-gradient(160deg, var(--lime), var(--green));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	filter: drop-shadow(0 0 24px rgba(0, 199, 102, .4));
+}
+
+.match-score span[aria-hidden] {
+	font-size: clamp(1.2rem, 3vw, 1.9rem);
+	color: rgba(147, 162, 155, .5);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.match-foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 20px 26px;
+	border-top: 1px solid var(--line-soft);
+}
+
+.match-caster {
+	font-size: .95rem;
+	color: var(--muted);
+}
+
+.match-caster strong {
+	color: var(--lime);
+	font-family: var(--font-head);
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
 }
 
 /* ---------------------------------------------- carrossel de episódios */
@@ -2024,7 +2286,7 @@ a.chip:hover {
 	}
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
 	.nav-toggle {
 		display: flex;
 	}
@@ -2106,6 +2368,39 @@ a.chip:hover {
 
 	.roster {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.caster {
+		flex-direction: column;
+		gap: 16px;
+		padding: 24px 22px;
+	}
+
+	.match-meta {
+		padding-inline: 20px;
+		font-size: 11px;
+	}
+
+	.match-state {
+		margin-left: 0;
+	}
+
+	.match-board {
+		gap: 8px;
+		padding-inline: 14px;
+	}
+
+	.side-badge {
+		font-size: 10px;
+		padding: 4px 10px;
+	}
+
+	.match-foot {
+		padding-inline: 20px;
+	}
+
+	.match-foot .btn {
+		width: 100%;
 	}
 
 	.footer-inner {

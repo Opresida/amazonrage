@@ -315,7 +315,7 @@
 		if (!id) return;
 
 		quemAbriu = botao;
-		lbTitle.textContent = "Rage Cast — " + (botao.dataset.title || "");
+		lbTitle.textContent = botao.dataset.title || "Amazon Rage";
 
 		var iframe = document.createElement("iframe");
 		iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
@@ -341,7 +341,8 @@
 	}
 
 	if (lightbox) {
-		document.querySelectorAll(".ep").forEach(function (card) {
+		// vale para os cards do carrossel e para o botão das partidas
+		document.querySelectorAll("[data-video]").forEach(function (card) {
 			card.addEventListener("click", function () { abrirPlayer(card); });
 		});
 

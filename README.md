@@ -52,6 +52,32 @@ O JS só anima o contador de porcentagem.
 Vale lembrar: 3,5 s é bastante tempo para quem chega pela primeira vez. Se
 o time notar queda no contato, reduzir para 1,5–2 s costuma resolver.
 
+## RageMatch — placar das partidas
+
+Seção `#ragematch`, com o narrador em destaque e a lista de partidas.
+Cada jogo é um `<article class="match">`. Para adicionar outro, duplique o
+bloco e troque:
+
+| O que | Onde |
+| ----- | ---- |
+| Formato | `.match-format` (MD1, MD3, MD5…) |
+| Modalidade | `.match-mode` |
+| Times | `.side-crest img` e o `<h3>` de cada lado |
+| Placar | os dois `<b>` dentro de `.match-score` |
+| Vencedor | classe `is-win` no `<b>` que venceu |
+| Selos | `.side-badge` (use `is-muted` no time visitante) |
+| Vídeo | `data-video` no botão "Assistir a partida" |
+
+O `.sr-only` dentro do placar existe para leitores de tela — o "2 × 0"
+visual não é lido de forma compreensível, então há uma versão em texto.
+
+### Escudos dos times convidados
+
+Ficam em `assets/img/teams/`. A logo da Fera veio como PNG branco sobre
+fundo preto estrelado; o fundo foi convertido em transparência pelo
+brilho e os respingos de estrela removidos por tamanho de mancha. Para um
+novo time, o ideal é pedir o arquivo já com fundo transparente.
+
 ## Carrossel de episódios do Rage Cast
 
 Fica dentro da seção `#ragecast`, logo abaixo do texto. Gira sozinho, em
@@ -111,13 +137,14 @@ cursor só rodam em telas com mouse (`hover: hover`):
 1. **Hero** — apresentação, `#reisdonorte` e números principais
 2. **Quem somos** — missão, campeonatos e movimento
 3. **Hall de ídolos** — elenco (Free Fire e Wild Rift)
-4. **Rage Cast** — o podcast oficial
-5. **Impacto do e-sports** — números do mercado
-6. **Comunidade** — Instagram e canais
-7. **Parceiro de mídia** — Conexão Amazonas
-8. **Benefícios do patrocinador** — 8 frentes de exposição
-9. **Planos de patrocínio** — Apoiador, Oficial e Master
-10. **Contato** — formulário de proposta e canais diretos
+4. **RageMatch** — amistosos narrados e placar das partidas
+5. **Rage Cast** — o podcast oficial
+6. **Impacto do e-sports** — números do mercado
+7. **Comunidade** — Instagram e canais
+8. **Parceiro de mídia** — Conexão Amazonas
+9. **Benefícios do patrocinador** — 8 frentes de exposição
+10. **Planos de patrocínio** — Apoiador, Oficial e Master
+11. **Contato** — formulário de proposta e canais diretos
 
 Todo o conteúdo veio da apresentação comercial oficial da equipe.
 
