@@ -188,6 +188,64 @@ acontece pela proposta comercial, a partir do formulário de contato.
 Para exibir os valores no futuro, troque o bloco `.plan-price.is-masked` de
 cada plano no `index.html` por um preço normal.
 
+## SEO
+
+Termos-alvo: **Amazon Rage**, **Reis do Norte**, **e-sports Manaus**,
+**e-sports Amazonas**.
+
+### O que está feito na página
+
+| Item | Onde |
+| ---- | ---- |
+| Título e descrição com marca, apelido e cidade | `<head>` |
+| `robots` com `max-image-preview:large` | `<head>` |
+| `geo.region` / `geo.placename` | `<head>` |
+| Dados estruturados em `@graph` | bloco JSON-LD no `<head>` |
+| Perguntas frequentes | seção `#faq` + `FAQPage` no JSON-LD |
+| H1 com complemento para leitores e buscadores | `.sr-only` dentro do `<h1>` |
+| Sitemap com imagens | `sitemap.xml` |
+| Open Graph e Twitter completos | `<head>` |
+
+O JSON-LD é um `@graph` com cinco entidades ligadas por `@id`:
+`SportsOrganization`, `WebSite`, `WebPage`, `PodcastSeries` e `FAQPage`.
+
+**Regra importante:** o texto das perguntas no HTML e no `FAQPage` precisa
+ser **idêntico**. O Google compara os dois e desconsidera a marcação quando
+divergem. Ao editar uma pergunta, edite nos dois lugares.
+
+Só entram no schema fatos confirmados pela equipe — sem data de fundação,
+sem canais não informados, sem números inventados.
+
+### Desempenho
+
+Velocidade conta como sinal de posicionamento. O que foi feito:
+
+- Todas as fotos têm versão **WebP**, servida por `<picture>` com o JPEG
+  como reserva. Os fundos em CSS usam `image-set()` dentro de `@supports`,
+  então navegador antigo continua recebendo o JPEG.
+- A logo foi reduzida de 320 KB para 138 KB (paleta), e a versão WebP tem
+  33 KB. Ela aparece no cabeçalho, no topo, no rodapé e no carregamento.
+- O fundo do topo é pré-carregado com `fetchpriority="high"`.
+
+Resultado medido no Chromium: LCP caiu de **1,34 s para 0,94 s**, e o
+conjunto de imagens ficou **43% mais leve**.
+
+### O que depende de vocês (fora do site)
+
+Código sozinho não coloca ninguém em primeiro lugar. Falta:
+
+1. **Google Search Console** — cadastrar o site e enviar o `sitemap.xml`.
+   É o que faz o Google descobrir a página em dias, não em semanas.
+2. **Perfil da Empresa no Google** — decisivo para "e-sports Manaus".
+   Sem ele, quem pesquisa por cidade dificilmente encontra o site.
+3. **Links apontando para o site** — a assinatura do Instagram, a
+   descrição dos vídeos no YouTube, o portal Conexão Amazonas, páginas dos
+   campeonatos disputados. É o fator que mais pesa nos termos genéricos.
+4. **Domínio próprio** — `amazonrage.com` passa mais autoridade que um
+   endereço `.netlify.app`.
+5. **Conteúdo novo com regularidade** — cada RageMatch e cada episódio do
+   Rage Cast publicados aqui dão ao Google motivo para voltar.
+
 ## Rodando localmente
 
 Não há dependências nem build. Basta servir a pasta:

@@ -101,6 +101,12 @@ img {
 	display: block;
 }
 
+/* <picture> só existe para oferecer o WebP: não deve criar caixa nenhuma,
+   assim todo o layout continua enxergando a <img> como filha direta. */
+picture {
+	display: contents;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -1936,6 +1942,80 @@ a.chip:hover {
 	font-size: .95rem;
 }
 
+/* ---------------------------------------------- perguntas frequentes */
+
+.faq {
+	display: grid;
+	gap: 1px;
+	background: var(--line-soft);
+	border: 1px solid var(--line-soft);
+}
+
+.faq-item {
+	background: var(--ink);
+	transition: background .25s;
+}
+
+.faq-item[open] {
+	background: var(--ink-3);
+}
+
+.faq-item summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 20px 24px;
+	cursor: pointer;
+	list-style: none;
+	font-family: var(--font-head);
+	font-size: 1.05rem;
+	font-weight: 600;
+	color: var(--white);
+	transition: color .2s;
+}
+
+.faq-item summary::-webkit-details-marker {
+	display: none;
+}
+
+.faq-item summary::after {
+	content: "";
+	flex-shrink: 0;
+	width: 12px;
+	height: 12px;
+	border-right: 2px solid var(--lime);
+	border-bottom: 2px solid var(--lime);
+	transform: translateY(-3px) rotate(45deg);
+	transition: transform .25s;
+}
+
+.faq-item[open] summary::after {
+	transform: translateY(2px) rotate(-135deg);
+}
+
+.faq-item summary:hover {
+	color: var(--lime);
+}
+
+.faq-item p {
+	padding: 0 24px 22px;
+	max-width: 78ch;
+	color: #b3bdb7;
+	font-size: .98rem;
+	animation: details-in .3s ease both;
+}
+
+.faq-item strong {
+	color: var(--white);
+}
+
+.faq-item a {
+	color: var(--lime);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
 /* ---------------------------------------------- contato */
 
 .section-contact {
@@ -2678,6 +2758,34 @@ a.chip:hover {
 
 	.stripes {
 		display: none;
+	}
+}
+
+/* ---------------------------------------------- WebP nos fundos
+   Os fundos em CSS ficam em JPEG por padrão e só trocam para WebP onde o
+   navegador confirma suporte — assim nada some em navegador antigo.
+   ------------------------------------------------------------------- */
+
+@supports (background-image: image-set(url("/assets/img/arena.webp") type("image/webp"))) {
+	.hero-bg {
+		background-image:
+			radial-gradient(120% 90% at 80% 15%, rgba(0, 199, 102, .28), transparent 60%),
+			radial-gradient(70% 70% at 10% 90%, rgba(199, 245, 30, .12), transparent 65%),
+			linear-gradient(180deg, rgba(7, 9, 11, .78) 0%, rgba(7, 9, 11, .93) 55%, var(--ink) 100%),
+			image-set(url("/assets/img/arena.webp") type("image/webp"));
+	}
+
+	.match-bg {
+		background-image:
+			radial-gradient(90% 60% at 50% 0%, rgba(0, 199, 102, .16), transparent 65%),
+			linear-gradient(180deg, rgba(7, 9, 11, .94), rgba(7, 9, 11, .97)),
+			image-set(url("/assets/img/arena.webp") type("image/webp"));
+	}
+
+	.contact-bg {
+		background-image:
+			linear-gradient(180deg, rgba(7, 9, 11, .95), rgba(7, 9, 11, .88)),
+			image-set(url("/assets/img/lounge.webp") type("image/webp"));
 	}
 }
 

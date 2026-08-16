@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 	<url>
 		<loc>https://amazonrage.netlify.app/</loc>
-		<lastmod>2026-08-15</lastmod>
-		<changefreq>monthly</changefreq>
+		<lastmod>2026-08-16</lastmod>
+		<changefreq>weekly</changefreq>
 		<priority>1.0</priority>
+		<image:image>
+			<image:loc>https://amazonrage.netlify.app/assets/img/logo.png</image:loc>
+			<image:title>Escudo da Amazon Rage E-Sports</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://amazonrage.netlify.app/assets/img/og-cover.jpg</image:loc>
+			<image:title>Amazon Rage E-Sports — Reis do Norte</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://amazonrage.netlify.app/assets/img/equipe.jpg</image:loc>
+			<image:title>Atletas da Amazon Rage em campeonato presencial</image:title>
+		</image:image>
+		<image:image>
+			<image:loc>https://amazonrage.netlify.app/assets/img/podcast.jpg</image:loc>
+			<image:title>Gravação do Rage Cast, podcast oficial da Amazon Rage</image:title>
+		</image:image>
 	</url>
 </urlset>

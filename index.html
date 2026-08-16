@@ -9,10 +9,19 @@
 	     quando esta classe existe — sem JS o site aparece inteiro, normalmente. -->
 	<script>document.documentElement.classList.add("js");</script>
 
-	<title>Amazon Rage E-Sports | Reis do Norte</title>
+	<title>Amazon Rage E-Sports | Reis do Norte — Manaus, Amazonas</title>
 	<meta name="description"
-		content="A primeira organização de e-sports do Amazonas que paga salário aos seus atletas. Free Fire, Wild Rift, Rage Cast e uma comunidade de mais de 15 mil gamers. Conheça os planos de patrocínio.">
+		content="A Amazon Rage é a organização de e-sports de Manaus, no Amazonas, conhecida como Reis do Norte. Free Fire e Wild Rift, campeã da Copa Amazônia.">
 	<meta name="theme-color" content="#07090B">
+	<meta name="author" content="Amazon Rage E-Sports">
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+	<meta name="geo.region" content="BR-AM">
+	<meta name="geo.placename" content="Manaus">
+
+	<!-- O fundo do topo é a maior imagem da primeira tela: buscar cedo melhora
+	     o tempo até a maior pintura de conteúdo, que conta como sinal de
+	     posicionamento. -->
+	<link rel="preload" as="image" href="/assets/img/arena.webp" type="image/webp" fetchpriority="high">
 
 	<!-- ATENÇÃO: ao apontar o domínio amazonrage.com para o Netlify, troque as
 	     cinco URLs absolutas abaixo (canonical, og:url, og:image e twitter:image)
@@ -22,7 +31,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Amazon Rage E-Sports">
 	<meta property="og:locale" content="pt_BR">
-	<meta property="og:title" content="Amazon Rage E-Sports | Reis do Norte">
+	<meta property="og:title" content="Amazon Rage E-Sports | Reis do Norte — Manaus, Amazonas">
 	<meta property="og:description"
 		content="Estrutura profissional para o talento que nasce no Norte. Free Fire, Wild Rift e o podcast Rage Cast — veja como a sua marca entra nessa.">
 	<meta property="og:url" content="https://amazonrage.netlify.app/">
@@ -49,20 +58,156 @@
 	<link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="/assets/css/style.css">
 
+	<!-- Dados estruturados. Um @graph com as entidades ligadas por @id:
+	     a organização, o site, a página, as perguntas frequentes e o podcast.
+	     Só entram fatos confirmados pela equipe. -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
-		"@type": "SportsOrganization",
-		"name": "Amazon Rage E-Sports",
-		"alternateName": "Reis do Norte",
-		"sport": "Esports",
-		"url": "https://amazonrage.netlify.app/",
-		"logo": "https://amazonrage.netlify.app/assets/img/logo.png",
-		"email": "contato@amazonrage.com",
-		"telephone": "+5516982166580",
-		"areaServed": "Amazonas, Brasil",
-		"address": { "@type": "PostalAddress", "addressRegion": "AM", "addressCountry": "BR" },
-		"sameAs": ["https://www.instagram.com/amazonrage/"]
+		"@graph": [
+			{
+				"@type": "SportsOrganization",
+				"@id": "https://amazonrage.netlify.app/#organizacao",
+				"name": "Amazon Rage E-Sports",
+				"alternateName": ["Amazon Rage", "Reis do Norte", "AMRG"],
+				"slogan": "Reis do Norte",
+				"description": "Organização de e-sports de Manaus, no Amazonas, que compete em Free Fire e League of Legends: Wild Rift. Campeã da Copa Amazônia e produtora do podcast Rage Cast.",
+				"url": "https://amazonrage.netlify.app/",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://amazonrage.netlify.app/assets/img/logo.png",
+					"width": 716,
+					"height": 607
+				},
+				"image": "https://amazonrage.netlify.app/assets/img/og-cover.jpg",
+				"email": "contato@amazonrage.com",
+				"telephone": "+5516982166580",
+				"sport": ["Esports", "Free Fire", "League of Legends: Wild Rift"],
+				"knowsAbout": ["E-sports", "Free Fire", "League of Legends: Wild Rift", "Amazonas", "Manaus"],
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Manaus",
+					"addressRegion": "AM",
+					"addressCountry": "BR"
+				},
+				"areaServed": [
+					{ "@type": "City", "name": "Manaus" },
+					{ "@type": "State", "name": "Amazonas" },
+					{ "@type": "Country", "name": "Brasil" }
+				],
+				"award": "Campeã da Copa Amazônia de League of Legends: Wild Rift",
+				"member": [
+					{ "@type": "Person", "name": "Fael", "jobTitle": "Atleta de Free Fire" },
+					{ "@type": "Person", "name": "Netto", "jobTitle": "Atleta de Free Fire" },
+					{ "@type": "Person", "name": "Niltão", "jobTitle": "Atleta de Wild Rift" },
+					{ "@type": "Person", "name": "Rouba Frag", "jobTitle": "Atleta de Wild Rift" },
+					{ "@type": "Person", "name": "CarolX", "jobTitle": "Atleta de Free Fire" },
+					{ "@type": "Person", "name": "Gigi DRX", "jobTitle": "Atleta de Free Fire" }
+				],
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"contactType": "Patrocínio e parcerias",
+					"email": "contato@amazonrage.com",
+					"telephone": "+5516982166580",
+					"availableLanguage": "Portuguese"
+				},
+				"sameAs": [
+					"https://www.instagram.com/amazonrage/",
+					"https://www.instagram.com/rage.cast/"
+				]
+			},
+			{
+				"@type": "WebSite",
+				"@id": "https://amazonrage.netlify.app/#site",
+				"url": "https://amazonrage.netlify.app/",
+				"name": "Amazon Rage E-Sports",
+				"inLanguage": "pt-BR",
+				"publisher": { "@id": "https://amazonrage.netlify.app/#organizacao" }
+			},
+			{
+				"@type": "WebPage",
+				"@id": "https://amazonrage.netlify.app/#pagina",
+				"url": "https://amazonrage.netlify.app/",
+				"name": "Amazon Rage E-Sports | Reis do Norte — Manaus, Amazonas",
+				"description": "A Amazon Rage é a organização de e-sports de Manaus, no Amazonas, conhecida como Reis do Norte. Free Fire e Wild Rift, campeã da Copa Amazônia.",
+				"inLanguage": "pt-BR",
+				"isPartOf": { "@id": "https://amazonrage.netlify.app/#site" },
+				"about": { "@id": "https://amazonrage.netlify.app/#organizacao" },
+				"primaryImageOfPage": "https://amazonrage.netlify.app/assets/img/og-cover.jpg"
+			},
+			{
+				"@type": "PodcastSeries",
+				"@id": "https://amazonrage.netlify.app/#ragecast",
+				"name": "Rage Cast",
+				"description": "Podcast oficial da Amazon Rage sobre o universo gamer, bastidores da equipe e o cenário de e-sports do Norte do Brasil.",
+				"inLanguage": "pt-BR",
+				"author": { "@id": "https://amazonrage.netlify.app/#organizacao" },
+				"sameAs": ["https://www.instagram.com/rage.cast/"]
+			},
+			{
+				"@type": "FAQPage",
+				"@id": "https://amazonrage.netlify.app/#faq",
+				"isPartOf": { "@id": "https://amazonrage.netlify.app/#pagina" },
+				"mainEntity": [
+					{
+						"@type": "Question",
+						"name": "O que é a Amazon Rage?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "A Amazon Rage é uma organização de e-sports sediada em Manaus, no Amazonas, conhecida como Reis do Norte. Compete em Free Fire e League of Legends: Wild Rift, produz o podcast Rage Cast e transmite a série de partidas RageMatch com narração profissional."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Onde fica a Amazon Rage?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "A equipe é de Manaus, no estado do Amazonas, e representa o Norte do Brasil no cenário competitivo nacional."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Quais jogos a Amazon Rage disputa?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "A Amazon Rage compete em duas modalidades: Free Fire, incluindo uma line feminina, e League of Legends: Wild Rift."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "A Amazon Rage já conquistou algum título?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Sim. A equipe é campeã da Copa Amazônia de League of Legends: Wild Rift, vencendo a final por 2 a 0 sobre o Manaus FC E-Sports."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "O que é o RageMatch?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "O RageMatch é a série de amistosos da Amazon Rage transmitidos com produção de campeonato: mesa de narração com o JV Narrador, cortes e vinhetas. A seção também registra as decisões oficiais disputadas pela equipe."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "O que é o Rage Cast?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "O Rage Cast é o podcast oficial da Amazon Rage. Fala sobre o universo gamer, bastidores da equipe e o cenário de e-sports, com distribuição no YouTube, Spotify e Instagram."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Como patrocinar a Amazon Rage?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "A equipe trabalha com três formatos de patrocínio — Apoiador, Oficial e Master — com contrato de doze meses e cotas limitadas. Os valores são apresentados na proposta comercial. O contato é pelo e-mail contato@amazonrage.com ou pelo formulário do site."
+						}
+					}
+				]
+			}
+		]
 	}
 	</script>
 </head>
@@ -72,7 +217,7 @@
 	     ela some mesmo se o JavaScript falhar. O JS só anima o contador. -->
 	<div class="preloader" id="preloader" aria-hidden="true">
 		<div class="preloader-inner">
-			<img class="preloader-crest" src="/assets/img/logo.png" alt="" width="190" height="161">
+			<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img class="preloader-crest" src="/assets/img/logo.png" alt="" width="190" height="161"></picture>
 			<p class="preloader-name glitch" data-text="AMAZON RAGE">AMAZON RAGE</p>
 			<div class="preloader-bar"><span></span></div>
 			<p class="preloader-status"><b id="preloaderPct">0</b>% — preparando a arena</p>
@@ -88,7 +233,7 @@
 	<header class="site-header" id="topo">
 		<div class="wrap header-inner">
 			<a class="brand" href="#topo" aria-label="Amazon Rage — início">
-				<img src="/assets/img/logo.png" alt="Amazon Rage" width="150" height="127" fetchpriority="high">
+				<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="Amazon Rage" width="150" height="127" fetchpriority="high"></picture>
 				<span class="brand-text">
 					<strong>Amazon Rage</strong>
 					<em>E-Sports · Amazonas</em>
@@ -126,10 +271,12 @@
 					<h1>
 						<span class="line-1">Amazon</span>
 						<span class="line-2 glitch glitch-slow" data-text="Rage">Rage</span>
+						<span class="sr-only">— organização de e-sports de Manaus, Amazonas</span>
 					</h1>
 					<p class="lead">
 						A <strong>primeira organização de e-sports do Amazonas</strong> que paga salário aos seus
-						atletas — e movimenta a cena gamer da região com talento, profissionalismo e impacto social.
+						atletas. De <strong>Manaus</strong> para o cenário nacional, com talento, profissionalismo e
+						impacto social.
 					</p>
 					<div class="hero-actions">
 						<a class="btn btn-primary" href="#patrocinio">Ver planos de patrocínio</a>
@@ -145,7 +292,7 @@
 				</div>
 
 				<div class="hero-crest reveal" aria-hidden="true">
-					<img src="/assets/img/logo.png" alt="" width="560" height="474" fetchpriority="high">
+					<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="" width="560" height="474" fetchpriority="high"></picture>
 				</div>
 			</div>
 
@@ -208,38 +355,38 @@
 
 				<div class="roster">
 					<article class="player reveal">
-						<img src="/assets/img/team/fael.jpg" alt="Fael, atleta de Free Fire da Amazon Rage" width="595"
-							height="590" loading="lazy">
+						<picture><source srcset="/assets/img/team/fael.webp" type="image/webp"><img src="/assets/img/team/fael.jpg" alt="Fael, atleta de Free Fire da Amazon Rage" width="595"
+							height="590" loading="lazy"></picture>
 						<span class="player-tag">Free Fire</span>
 						<h3>Fael</h3>
 					</article>
 					<article class="player reveal">
-						<img src="/assets/img/team/netto.jpg" alt="Netto, atleta de Free Fire da Amazon Rage" width="594"
-							height="593" loading="lazy">
+						<picture><source srcset="/assets/img/team/netto.webp" type="image/webp"><img src="/assets/img/team/netto.jpg" alt="Netto, atleta de Free Fire da Amazon Rage" width="594"
+							height="593" loading="lazy"></picture>
 						<span class="player-tag">Free Fire</span>
 						<h3>Netto</h3>
 					</article>
 					<article class="player reveal">
-						<img src="/assets/img/team/niltao.jpg" alt="Niltão, atleta de Wild Rift da Amazon Rage"
-							width="594" height="591" loading="lazy">
+						<picture><source srcset="/assets/img/team/niltao.webp" type="image/webp"><img src="/assets/img/team/niltao.jpg" alt="Niltão, atleta de Wild Rift da Amazon Rage"
+							width="594" height="591" loading="lazy"></picture>
 						<span class="player-tag">Wild Rift</span>
 						<h3>Niltão</h3>
 					</article>
 					<article class="player reveal">
-						<img src="/assets/img/team/rouba-frag.jpg" alt="Rouba Frag, atleta de Wild Rift da Amazon Rage"
-							width="591" height="595" loading="lazy">
+						<picture><source srcset="/assets/img/team/rouba-frag.webp" type="image/webp"><img src="/assets/img/team/rouba-frag.jpg" alt="Rouba Frag, atleta de Wild Rift da Amazon Rage"
+							width="591" height="595" loading="lazy"></picture>
 						<span class="player-tag">Wild Rift</span>
 						<h3>Rouba Frag</h3>
 					</article>
 					<article class="player reveal">
-						<img src="/assets/img/team/carolx.jpg" alt="CarolX, atleta de Free Fire da Amazon Rage"
-							width="594" height="594" loading="lazy">
+						<picture><source srcset="/assets/img/team/carolx.webp" type="image/webp"><img src="/assets/img/team/carolx.jpg" alt="CarolX, atleta de Free Fire da Amazon Rage"
+							width="594" height="594" loading="lazy"></picture>
 						<span class="player-tag">Free Fire</span>
 						<h3>CarolX</h3>
 					</article>
 					<article class="player reveal">
-						<img src="/assets/img/team/gigi-drx.jpg" alt="Gigi DRX, atleta de Free Fire da Amazon Rage"
-							width="476" height="592" loading="lazy">
+						<picture><source srcset="/assets/img/team/gigi-drx.webp" type="image/webp"><img src="/assets/img/team/gigi-drx.jpg" alt="Gigi DRX, atleta de Free Fire da Amazon Rage"
+							width="476" height="592" loading="lazy"></picture>
 						<span class="player-tag">Free Fire</span>
 						<h3>Gigi DRX</h3>
 					</article>
@@ -294,8 +441,8 @@
 						<div class="match-board">
 							<div class="side">
 								<div class="side-crest">
-									<img src="/assets/img/logo.png" alt="Escudo da Amazon Rage" width="180"
-										height="153" loading="lazy">
+									<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="Escudo da Amazon Rage" width="180"
+										height="153" loading="lazy"></picture>
 								</div>
 								<h3>Amazon Rage</h3>
 								<span class="side-badge">Campeão</span>
@@ -310,8 +457,8 @@
 
 							<div class="side">
 								<div class="side-crest">
-									<img src="/assets/img/teams/manaus-fc.png" alt="Escudo do Manaus FC E-Sports"
-										width="382" height="560" loading="lazy">
+									<picture><source srcset="/assets/img/teams/manaus-fc.webp" type="image/webp"><img src="/assets/img/teams/manaus-fc.png" alt="Escudo do Manaus FC E-Sports"
+										width="382" height="560" loading="lazy"></picture>
 								</div>
 								<h3>Manaus FC E-Sports</h3>
 								<span class="side-badge is-muted">Vice-campeão</span>
@@ -330,8 +477,8 @@
 								<div class="mvps">
 									<article class="mvp">
 										<div class="mvp-photo">
-											<img src="/assets/img/mvp/niltao.jpg" alt="Niltão, atleta da Amazon Rage"
-												width="640" height="640" loading="lazy">
+											<picture><source srcset="/assets/img/mvp/niltao.webp" type="image/webp"><img src="/assets/img/mvp/niltao.jpg" alt="Niltão, atleta da Amazon Rage"
+												width="640" height="640" loading="lazy"></picture>
 											<span class="mvp-game">Jogo 1</span>
 										</div>
 										<div class="mvp-info">
@@ -359,8 +506,8 @@
 
 									<article class="mvp">
 										<div class="mvp-photo">
-											<img src="/assets/img/mvp/dudu.jpg" alt="Dudu, atleta da Amazon Rage"
-												width="640" height="640" loading="lazy">
+											<picture><source srcset="/assets/img/mvp/dudu.webp" type="image/webp"><img src="/assets/img/mvp/dudu.jpg" alt="Dudu, atleta da Amazon Rage"
+												width="640" height="640" loading="lazy"></picture>
 											<span class="mvp-game">Jogo 2</span>
 										</div>
 										<div class="mvp-info">
@@ -411,8 +558,8 @@
 						<div class="match-board">
 							<div class="side">
 								<div class="side-crest">
-									<img src="/assets/img/logo.png" alt="Escudo da Amazon Rage" width="180"
-										height="153" loading="lazy">
+									<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="Escudo da Amazon Rage" width="180"
+										height="153" loading="lazy"></picture>
 								</div>
 								<h3>Amazon Rage</h3>
 								<span class="side-badge">Vitória</span>
@@ -427,8 +574,8 @@
 
 							<div class="side">
 								<div class="side-crest">
-									<img src="/assets/img/teams/fera.png" alt="Escudo da Fera E-Sports" width="178"
-										height="180" loading="lazy">
+									<picture><source srcset="/assets/img/teams/fera.webp" type="image/webp"><img src="/assets/img/teams/fera.png" alt="Escudo da Fera E-Sports" width="178"
+										height="180" loading="lazy"></picture>
 								</div>
 								<h3>Fera E-Sports</h3>
 								<span class="side-badge is-muted">Convidado</span>
@@ -450,8 +597,8 @@
 								<div class="mvps">
 									<article class="mvp">
 										<div class="mvp-photo">
-											<img src="/assets/img/mvp/iza-trem.jpg" alt="IZA trem, atleta da Amazon Rage"
-												width="640" height="640" loading="lazy">
+											<picture><source srcset="/assets/img/mvp/iza-trem.webp" type="image/webp"><img src="/assets/img/mvp/iza-trem.jpg" alt="IZA trem, atleta da Amazon Rage"
+												width="640" height="640" loading="lazy"></picture>
 											<span class="mvp-game">Jogo 1</span>
 										</div>
 										<div class="mvp-info">
@@ -478,8 +625,8 @@
 
 									<article class="mvp">
 										<div class="mvp-photo">
-											<img src="/assets/img/mvp/carolx.jpg" alt="CarolX, atleta da Amazon Rage"
-												width="640" height="640" loading="lazy">
+											<picture><source srcset="/assets/img/mvp/carolx.webp" type="image/webp"><img src="/assets/img/mvp/carolx.jpg" alt="CarolX, atleta da Amazon Rage"
+												width="640" height="640" loading="lazy"></picture>
 											<span class="mvp-game">Jogo 2</span>
 										</div>
 										<div class="mvp-info">
@@ -521,8 +668,8 @@
 		<section class="section" id="ragecast">
 			<div class="wrap split">
 				<div class="split-media reveal">
-					<img src="/assets/img/podcast.jpg" alt="Gravação do Rage Cast, o podcast oficial da Amazon Rage"
-						width="900" height="874" loading="lazy">
+					<picture><source srcset="/assets/img/podcast.webp" type="image/webp"><img src="/assets/img/podcast.jpg" alt="Gravação do Rage Cast, o podcast oficial da Amazon Rage"
+						width="900" height="874" loading="lazy"></picture>
 					<span class="badge-corner">#podcast</span>
 				</div>
 
@@ -670,8 +817,8 @@
 
 				<div class="split">
 					<div class="split-media reveal">
-						<img src="/assets/img/equipe.jpg" alt="Atletas da Amazon Rage disputando um campeonato presencial"
-							width="592" height="594" loading="lazy">
+						<picture><source srcset="/assets/img/equipe.webp" type="image/webp"><img src="/assets/img/equipe.jpg" alt="Atletas da Amazon Rage disputando um campeonato presencial"
+							width="592" height="594" loading="lazy"></picture>
 						<span class="badge-corner">#reisdonorte</span>
 					</div>
 
@@ -722,7 +869,7 @@
 				<div class="split-copy reveal">
 					<div class="ig-card">
 						<div class="ig-head">
-							<img src="/assets/img/logo.png" alt="" width="72" height="61">
+							<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="" width="72" height="61"></picture>
 							<div>
 								<strong>Amazon Rage</strong>
 								<span>@amazonrage</span>
@@ -910,12 +1057,78 @@
 			</div>
 		</section>
 
+		<!-- ============================ PERGUNTAS FREQUENTES ============================
+		     O texto daqui é o mesmo do bloco FAQPage nos dados estruturados do
+		     <head>. Se mudar um, mude o outro — o Google compara os dois. -->
+		<section class="section" id="faq">
+			<div class="wrap">
+				<header class="section-head reveal">
+					<p class="eyebrow">10 — Perguntas frequentes</p>
+					<h2>Tudo sobre a <span class="hl">Amazon Rage</span></h2>
+					<p class="section-lead">
+						O que a equipe é, onde fica, o que disputa e como a sua marca entra nessa.
+					</p>
+				</header>
+
+				<div class="faq reveal">
+					<details class="faq-item">
+						<summary>O que é a Amazon Rage?</summary>
+						<p>A Amazon Rage é uma organização de e-sports sediada em <strong>Manaus, no Amazonas</strong>,
+							conhecida como <strong>Reis do Norte</strong>. Compete em Free Fire e League of Legends:
+							Wild Rift, produz o podcast Rage Cast e transmite a série de partidas RageMatch com narração
+							profissional.</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>Onde fica a Amazon Rage?</summary>
+						<p>A equipe é de <strong>Manaus</strong>, no estado do <strong>Amazonas</strong>, e representa o
+							Norte do Brasil no cenário competitivo nacional.</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>Quais jogos a Amazon Rage disputa?</summary>
+						<p>Duas modalidades: <strong>Free Fire</strong>, incluindo uma line feminina, e
+							<strong>League of Legends: Wild Rift</strong>.
+						</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>A Amazon Rage já conquistou algum título?</summary>
+						<p>Sim. A equipe é <strong>campeã da Copa Amazônia</strong> de League of Legends: Wild Rift,
+							vencendo a final por 2 a 0 sobre o Manaus FC E-Sports.</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>O que é o RageMatch?</summary>
+						<p>O RageMatch é a série de amistosos da Amazon Rage transmitidos com produção de campeonato:
+							mesa de narração com o <strong>JV Narrador</strong>, cortes e vinhetas. A seção também
+							registra as decisões oficiais disputadas pela equipe.</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>O que é o Rage Cast?</summary>
+						<p>O Rage Cast é o <strong>podcast oficial</strong> da Amazon Rage. Fala sobre o universo gamer,
+							bastidores da equipe e o cenário de e-sports, com distribuição no YouTube, Spotify e
+							Instagram.</p>
+					</details>
+
+					<details class="faq-item">
+						<summary>Como patrocinar a Amazon Rage?</summary>
+						<p>A equipe trabalha com três formatos — <strong>Apoiador, Oficial e Master</strong> — com
+							contrato de doze meses e cotas limitadas. Os valores são apresentados na proposta comercial.
+							Fale com a gente por <a href="mailto:contato@amazonrage.com">contato@amazonrage.com</a> ou
+							pelo <a href="#contato">formulário abaixo</a>.</p>
+					</details>
+				</div>
+			</div>
+		</section>
+
 		<!-- ============================ CONTATO ============================ -->
 		<section class="section section-contact" id="contato">
 			<div class="contact-bg" aria-hidden="true"></div>
 			<div class="wrap split">
 				<div class="split-copy reveal">
-					<p class="eyebrow">10 — Contato</p>
+					<p class="eyebrow">11 — Contato</p>
 					<h2>Junte-se aos <span class="hl">Reis do Norte</span></h2>
 					<p class="section-lead">
 						Estamos prontos para construir parcerias sólidas, inovadoras e de alto retorno para a sua marca.
@@ -1003,7 +1216,7 @@
 	<footer class="site-footer">
 		<div class="wrap footer-inner">
 			<div class="footer-brand">
-				<img src="/assets/img/logo.png" alt="Amazon Rage" width="120" height="102" loading="lazy">
+				<picture><source srcset="/assets/img/logo.webp" type="image/webp"><img src="/assets/img/logo.png" alt="Amazon Rage" width="120" height="102" loading="lazy"></picture>
 				<p>Estrutura profissional, disciplina competitiva e representatividade para o talento que nasce no
 					Norte. <strong>#reisdonorte</strong>
 				</p>
@@ -1017,6 +1230,7 @@
 				<a href="#ragecast">Rage Cast</a>
 				<a href="#beneficios">Benefícios</a>
 				<a href="#patrocinio">Planos</a>
+				<a href="#faq">Perguntas frequentes</a>
 			</nav>
 
 			<div class="footer-contact">
