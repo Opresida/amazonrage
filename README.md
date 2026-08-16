@@ -52,6 +52,42 @@ O JS só anima o contador de porcentagem.
 Vale lembrar: 3,5 s é bastante tempo para quem chega pela primeira vez. Se
 o time notar queda no contato, reduzir para 1,5–2 s costuma resolver.
 
+## Carrossel de episódios do Rage Cast
+
+Fica dentro da seção `#ragecast`, logo abaixo do texto. Gira sozinho, em
+loop contínuo, e pausa quando o mouse entra, quando algo recebe foco pelo
+teclado ou quando o visitante clica em **Pausar giro**.
+
+### Trocar ou adicionar um episódio
+
+Cada card é um `<button class="ep">` no `index.html`. Só dois valores
+importam — o resto é automático:
+
+```html
+<button class="ep" type="button" data-video="JS6_V7fWRos" data-title="Episódio 01">
+	<img src="https://i.ytimg.com/vi/JS6_V7fWRos/hqdefault.jpg" ...>
+	...
+	<span class="ep-title">Episódio 01</span>
+</button>
+```
+
+- `data-video` e o `src` da miniatura usam o **ID do vídeo no YouTube** —
+  é o trecho depois de `youtu.be/`, `watch?v=` ou `/live/`.
+  Em `youtube.com/live/JS6_V7fWRos?is=...` o ID é `JS6_V7fWRos`.
+- `data-title` e `.ep-title` são o nome exibido. Os episódios estão
+  numerados de 01 a 08 na ordem em que foram enviados — troque pelos
+  títulos reais quando quiser.
+
+Não há limite de quantidade: o JavaScript duplica a fita sozinho para o
+giro emendar sem salto.
+
+### Como o vídeo abre
+
+Nada do YouTube carrega antes de alguém clicar — a página mostra só a
+miniatura. Ao clicar, o player abre numa sobreposição usando o domínio
+`youtube-nocookie.com`. Ao fechar (`Esc`, botão ✕ ou clique fora), o
+iframe é destruído, o que interrompe a reprodução.
+
 ## Efeitos de ambiente
 
 Todos desligam sozinhos com `prefers-reduced-motion`, e os que dependem do
@@ -68,6 +104,7 @@ cursor só rodam em telas com mouse (`hover: hover`):
 | Brilho no cursor          | Todos os botões                          |
 | Profundidade na rolagem   | Escudo e fundo do hero                   |
 | Contadores                | Números do hero, impacto e mídia         |
+| Carrossel em loop         | Episódios do Rage Cast                   |
 
 ## Seções da página
 

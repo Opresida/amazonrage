@@ -278,6 +278,89 @@
 		});
 	}
 
+	/* ---------------------------------------- carrossel de episódios
+	   A fita é clonada uma vez para o giro emendar sem salto. O clone fica
+	   fora da leitura de tela e fora da navegação por teclado. */
+
+	var belt = document.getElementById("reelBelt");
+	var reelToggle = document.getElementById("reelToggle");
+
+	if (belt) {
+		var trilha = belt.querySelector(".reel-track");
+		var clone = trilha.cloneNode(true);
+		clone.setAttribute("aria-hidden", "true");
+		clone.querySelectorAll("button").forEach(function (b) { b.tabIndex = -1; });
+		belt.appendChild(clone);
+		if (!calmo) belt.classList.add("is-looping");
+	}
+
+	if (reelToggle && belt) {
+		reelToggle.addEventListener("click", function () {
+			var pausado = belt.classList.toggle("is-paused");
+			reelToggle.setAttribute("aria-pressed", String(pausado));
+			reelToggle.textContent = pausado ? "Retomar giro" : "Pausar giro";
+		});
+	}
+
+	/* ---------------------------------------- player em sobreposição */
+
+	var lightbox = document.getElementById("lightbox");
+	var lbFrame = document.getElementById("lightboxFrame");
+	var lbTitle = document.getElementById("lightboxTitle");
+	var lbClose = document.getElementById("lightboxClose");
+	var quemAbriu = null;
+
+	function abrirPlayer(botao) {
+		var id = botao.dataset.video;
+		if (!id) return;
+
+		quemAbriu = botao;
+		lbTitle.textContent = "Rage Cast — " + (botao.dataset.title || "");
+
+		var iframe = document.createElement("iframe");
+		iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+		iframe.title = lbTitle.textContent;
+		iframe.allow = "accelerometer; autoplay; encrypted-media; picture-in-picture; web-share";
+		iframe.allowFullscreen = true;
+		lbFrame.appendChild(iframe);
+
+		lightbox.hidden = false;
+		document.body.classList.add("modal-open");
+		lbClose.focus();
+	}
+
+	function fecharPlayer() {
+		if (lightbox.hidden) return;
+		lightbox.hidden = true;
+		lbFrame.textContent = "";
+		document.body.classList.remove("modal-open");
+		if (quemAbriu) {
+			quemAbriu.focus();
+			quemAbriu = null;
+		}
+	}
+
+	if (lightbox) {
+		document.querySelectorAll(".ep").forEach(function (card) {
+			card.addEventListener("click", function () { abrirPlayer(card); });
+		});
+
+		lbClose.addEventListener("click", fecharPlayer);
+
+		lightbox.addEventListener("click", function (e) {
+			if (e.target === lightbox) fecharPlayer();
+		});
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape") fecharPlayer();
+			// mantém o foco preso no player enquanto ele estiver aberto
+			if (e.key === "Tab" && !lightbox.hidden) {
+				e.preventDefault();
+				lbClose.focus();
+			}
+		});
+	}
+
 	/* ---------------------------------------- planos -> formulário */
 
 	var planoSelect = document.getElementById("plano");

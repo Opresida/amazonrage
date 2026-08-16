@@ -285,7 +285,109 @@
 						rel="noopener">@rage.cast no Instagram</a>
 				</div>
 			</div>
+
+			<!-- Carrossel de episódios. Para trocar um vídeo basta alterar o
+			     data-video (o ID do YouTube) e o texto de .ep-title — a
+			     miniatura vem sozinha do ID. O JS duplica a fita para o giro
+			     contínuo; sem JavaScript vira uma faixa de rolagem normal. -->
+			<div class="reel">
+				<div class="wrap reel-head">
+					<h3>Episódios no ar</h3>
+					<button class="reel-toggle" id="reelToggle" type="button" aria-pressed="false">Pausar giro</button>
+				</div>
+
+				<div class="reel-viewport">
+					<div class="reel-belt" id="reelBelt">
+						<ul class="reel-track">
+							<li>
+								<button class="ep" type="button" data-video="JS6_V7fWRos" data-title="Episódio 01">
+									<img src="https://i.ytimg.com/vi/JS6_V7fWRos/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 01</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="RYM8RnQV6Vk" data-title="Episódio 02">
+									<img src="https://i.ytimg.com/vi/RYM8RnQV6Vk/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 02</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="SuaYDJm6jGQ" data-title="Episódio 03">
+									<img src="https://i.ytimg.com/vi/SuaYDJm6jGQ/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 03</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="Yopaeo4594M" data-title="Episódio 04">
+									<img src="https://i.ytimg.com/vi/Yopaeo4594M/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 04</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="p11Y2thDC1A" data-title="Episódio 05">
+									<img src="https://i.ytimg.com/vi/p11Y2thDC1A/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 05</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="MSKXVQ3qTl4" data-title="Episódio 06">
+									<img src="https://i.ytimg.com/vi/MSKXVQ3qTl4/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 06</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="oTSr6mWcTas" data-title="Episódio 07">
+									<img src="https://i.ytimg.com/vi/oTSr6mWcTas/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 07</span>
+								</button>
+							</li>
+							<li>
+								<button class="ep" type="button" data-video="hPzIUWOjV1k" data-title="Episódio 08">
+									<img src="https://i.ytimg.com/vi/hPzIUWOjV1k/hqdefault.jpg" alt="" width="480"
+										height="360" loading="lazy">
+									<span class="ep-play" aria-hidden="true"></span>
+									<span class="ep-tag">Rage Cast</span>
+									<span class="ep-title">Episódio 08</span>
+								</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</section>
+
+		<!-- Player em sobreposição: o iframe só é criado ao abrir e some ao
+		     fechar, então nada do YouTube carrega antes de alguém clicar. -->
+		<div class="lightbox" id="lightbox" hidden>
+			<div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+				<div class="lightbox-bar">
+					<p id="lightboxTitle">Rage Cast</p>
+					<button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar player">✕</button>
+				</div>
+				<div class="lightbox-frame" id="lightboxFrame"></div>
+			</div>
+		</div>
 
 		<!-- ============================ IMPACTO ============================ -->
 		<section class="section section-alt" id="impacto">
