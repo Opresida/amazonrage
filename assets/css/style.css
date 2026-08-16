@@ -216,6 +216,19 @@ h3 {
 	padding: 8px 0;
 }
 
+/* Com a gaveta aberta o cabeçalho sobe acima do player de trilha (300) e da
+   barra de progresso (200), que antes cortavam o menu por cima.
+
+   O backdrop-filter sai daqui por um motivo menos óbvio: ele cria bloco
+   contentor para descendentes fixos. Depois de rolar a página, o cabeçalho
+   ganha .is-stuck com blur, e a gaveta — que é position:fixed — deixava de
+   se medir pela janela e passava a se medir pelo cabeçalho, encolhendo de
+   844px para 130px. O menu só funcionava no topo do site. */
+body.nav-open .site-header {
+	z-index: 400;
+	backdrop-filter: none;
+}
+
 .header-inner {
 	display: flex;
 	align-items: center;
@@ -2961,6 +2974,10 @@ a.chip:hover {
 @media (max-width: 1024px) {
 	.nav-toggle {
 		display: flex;
+		position: relative;
+		z-index: 3;
+		/* acima do véu (1) e da gaveta (2), senão o botão de fechar
+		   fica coberto pela própria gaveta */
 	}
 
 	.nav {
@@ -2980,8 +2997,32 @@ a.chip:hover {
 		overflow-y: auto;
 	}
 
+	.nav {
+		z-index: 2;
+	}
+
 	.nav.is-open {
 		transform: none;
+	}
+
+	/* Véu atrás da gaveta. Sem ele, tocar fora do menu não fazia nada e a
+	   página ficava com a rolagem travada — parecia que o site tinha
+	   congelado. Os cliques nele são atribuídos ao próprio cabeçalho. */
+	.site-header::after {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: 1;
+		background: rgba(4, 6, 7, .65);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s ease, visibility 0s linear .3s;
+	}
+
+	body.nav-open .site-header::after {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity .3s ease;
 	}
 
 	.nav>a:not(.btn) {

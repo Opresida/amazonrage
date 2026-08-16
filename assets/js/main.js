@@ -103,6 +103,13 @@
 		if (e.target.closest("a")) closeNav();
 	});
 
+	// Tocar fora fecha. O véu é um ::after do cabeçalho, então o clique nele
+	// chega como se fosse no próprio <header>. Sem isso a rolagem ficava
+	// travada e o site parecia congelado.
+	header.addEventListener("click", function (e) {
+		if (e.target === header && nav.classList.contains("is-open")) closeNav();
+	});
+
 	document.addEventListener("keydown", function (e) {
 		if (e.key === "Escape" && nav.classList.contains("is-open")) {
 			closeNav();
