@@ -2,7 +2,12 @@
 
 Coloque aqui o arquivo da música que toca ao abrir o site.
 
-**Nome esperado:** `rage.mp3` — a faixa **RAGE**, a mesma do clipe oficial.
+**Arquivo atual:** `rage.mp3` — a faixa **RAGE**, a mesma do clipe oficial.
+2 min 2 s, 128 kbps estéreo, 1,9 MB.
+
+O original enviado tinha 4,7 MB a 319 kbps. Como o arquivo baixa junto com
+a página, foi recodificado para 128 kbps — 60% menor, qualidade de
+streaming. O master original **não fica no repositório**: guarde-o à parte.
 
 Enquanto o arquivo não existir, o player simplesmente **não aparece** — o
 site continua funcionando normalmente, sem erro e sem espaço vazio.

@@ -743,11 +743,38 @@
 			aviso.textContent = "Trilha pausada";
 		}
 
+		var mexeuNoPainel = false;
+
 		btnPainel.addEventListener("click", function () {
+			mexeuNoPainel = true;
 			var aberto = !trilha.classList.contains("is-open");
 			abrirPainel(aberto);
 			lembrar("painel", aberto ? "1" : "0");
 		});
+
+		// Depois que a música engata, o painel sai da frente sozinho — em tela
+		// pequena ele cobre parte do conteúdo. A contagem só começa quando a
+		// tela de carregamento sai, senão ele se recolhe atrás dela e ninguém
+		// chega a ver. Quem mexeu no painel manda mais que essa regra.
+		function quandoEntrar(feito) {
+			var tela = document.getElementById("preloader");
+			if (!tela) return feito();
+
+			var olho = setInterval(function () {
+				if (!tela.isConnected || getComputedStyle(tela).visibility === "hidden") {
+					clearInterval(olho);
+					feito();
+				}
+			}, 300);
+		}
+
+		som.addEventListener("playing", function () {
+			quandoEntrar(function () {
+				setTimeout(function () {
+					if (!mexeuNoPainel && !som.paused) abrirPainel(false);
+				}, 5000);
+			});
+		}, { once: true });
 
 		// na primeira visita o painel vem aberto, senão ninguém percebe a trilha
 		som.addEventListener("canplay", function () {
