@@ -2,7 +2,7 @@
 
 Coloque aqui o arquivo da música que toca ao abrir o site.
 
-**Nome esperado:** `tema-amazon-rage.mp3`
+**Nome esperado:** `rage.mp3` — a faixa **RAGE**, a mesma do clipe oficial.
 
 Enquanto o arquivo não existir, o player simplesmente **não aparece** — o
 site continua funcionando normalmente, sem erro e sem espaço vazio.
@@ -24,12 +24,12 @@ Tudo vive em uma linha do `index.html`:
 
 ```html
 <aside class="trilha" id="player" hidden
-	data-fonte="/assets/audio/tema-amazon-rage.mp3"
-	data-titulo="Tema oficial">
+	data-fonte="/assets/audio/rage.mp3"
+	data-titulo="RAGE">
 ```
 
 - `data-fonte` — caminho do arquivo
 - `data-titulo` — nome que aparece no player
 
-Como são duas músicas autorais, dá para alternar qual toca trocando só o
-`data-fonte`.
+Como são duas músicas autorais, dá para alternar qual toca trocando o
+`data-fonte` e o `data-titulo`. A segunda faixa ainda será enviada.
