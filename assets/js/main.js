@@ -685,9 +685,12 @@
 		trilha.classList.toggle("is-muted", mudo);
 		btnMudo.setAttribute("aria-label", mudo ? "Reativar som" : "Silenciar trilha");
 
+		var estado = document.getElementById("playerEstado");
+
 		function marcarTocando(tocando) {
 			trilha.classList.toggle("is-playing", tocando);
 			btnPlay.setAttribute("aria-label", tocando ? "Pausar trilha" : "Tocar trilha");
+			estado.textContent = tocando ? "Tocando agora" : "Trilha oficial";
 			if (tocando) trilha.classList.remove("is-waiting");
 			else if (!trilha.classList.contains("is-waiting")) aviso.textContent = "Trilha pausada";
 		}
@@ -711,9 +714,15 @@
 			return p && p.catch ? p : Promise.resolve();
 		}
 
+		function abrirPainel(aberto) {
+			trilha.classList.toggle("is-open", aberto);
+			btnPainel.setAttribute("aria-expanded", String(aberto));
+		}
+
 		function esperarGesto() {
 			trilha.classList.add("is-waiting");
 			aviso.textContent = "Clique para ouvir";
+			abrirPainel(true);   // o aviso precisa estar à vista
 
 			var engatar = function () {
 				tocar().catch(function () { /* segue em silêncio */ });
@@ -735,9 +744,15 @@
 		}
 
 		btnPainel.addEventListener("click", function () {
-			var aberto = trilha.classList.toggle("is-open");
-			btnPainel.setAttribute("aria-expanded", String(aberto));
+			var aberto = !trilha.classList.contains("is-open");
+			abrirPainel(aberto);
+			lembrar("painel", aberto ? "1" : "0");
 		});
+
+		// na primeira visita o painel vem aberto, senão ninguém percebe a trilha
+		som.addEventListener("canplay", function () {
+			if (lembrado("painel", "1") === "1") abrirPainel(true);
+		}, { once: true });
 
 		btnPlay.addEventListener("click", function () {
 			if (som.paused) {
