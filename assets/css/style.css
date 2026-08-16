@@ -1312,7 +1312,14 @@ h3 {
 	text-transform: uppercase;
 }
 
-/* linha do título, no lugar onde as outras partidas trazem o botão */
+/* narração e título ficam juntos à esquerda, o botão continua à direita */
+.match-foot-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 24px;
+}
+
 .match-cup {
 	display: inline-flex;
 	align-items: center;
